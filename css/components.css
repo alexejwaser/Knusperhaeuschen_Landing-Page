@@ -55,26 +55,28 @@
   outline-offset: 4px;
 }
 
-/* Button Variants */
+/* Button Variants - Light Theme */
 .btn-primary {
   background-color: var(--c-accent);
-  color: var(--c-bg);
+  color: var(--c-snow);
 }
 
 .btn-primary:hover {
-  background-color: var(--c-hover);
+  background-color: var(--c-accent-dark);
   box-shadow: var(--shadow-accent);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--c-accent);
+  color: var(--c-accent-dark);
   border: 2px solid var(--c-accent);
 }
 
 .btn-secondary:hover {
-  background-color: var(--c-accent);
-  color: var(--c-bg);
+  background-color: var(--c-accent-light);
+  color: var(--c-text);
+  border-color: var(--c-accent-light);
 }
 
 .btn-large {
@@ -98,15 +100,15 @@
    CARDS
    ============================================ */
 .card {
-  background-color: rgba(255, 254, 250, 0.05);
+  background-color: var(--c-snow);
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
   position: relative;
   overflow: hidden;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(238, 208, 112, 0.1);
+  border: 2px solid var(--c-accent-light);
   transform: rotate(0.3deg);
+  box-shadow: var(--shadow-warm);
 }
 
 .card::before {
@@ -128,9 +130,9 @@
 }
 
 .card:hover {
-  transform: rotate(0.3deg) translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(238, 208, 112, 0.3);
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: var(--shadow-accent);
+  border-color: var(--c-accent);
 }
 
 .card-icon {
@@ -148,7 +150,7 @@
 }
 
 .card-text {
-  color: var(--c-text-on-dark);
+  color: var(--c-text);
   line-height: 1.6;
 }
 
@@ -177,7 +179,7 @@
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
-  color: var(--c-soft);
+  color: var(--c-accent-dark);
   font-size: 0.9375rem;
 }
 
@@ -189,23 +191,23 @@
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--c-soft);
-  background-color: rgba(255, 254, 250, 0.08);
-  border: 2px solid rgba(238, 208, 112, 0.2);
+  color: var(--c-text);
+  background-color: var(--c-snow);
+  border: 2px solid var(--c-accent-light);
   border-radius: var(--radius-md);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  backdrop-filter: blur(5px);
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: rgba(218, 218, 218, 0.5);
+  color: var(--c-text-soft);
+  opacity: 0.6;
 }
 
 .form-input:hover,
 .form-textarea:hover,
 .form-select:hover {
-  border-color: rgba(238, 208, 112, 0.4);
+  border-color: var(--c-accent);
 }
 
 .form-input:focus,
@@ -213,7 +215,7 @@
 .form-select:focus {
   outline: none;
   border-color: var(--c-accent);
-  box-shadow: 0 0 0 3px rgba(238, 208, 112, 0.1);
+  box-shadow: 0 0 0 3px rgba(197, 163, 71, 0.15);
 }
 
 .form-input.error,
@@ -248,6 +250,9 @@
   position: absolute;
   opacity: 0;
   cursor: pointer;
+  width: 20px;
+  height: 20px;
+  z-index: 1;
 }
 
 .form-checkbox-custom,
@@ -255,9 +260,9 @@
   width: 20px;
   height: 20px;
   min-width: 20px;
-  border: 2px solid rgba(238, 208, 112, 0.3);
+  border: 2px solid var(--c-accent);
   border-radius: var(--radius-sm);
-  background-color: rgba(255, 254, 250, 0.05);
+  background-color: var(--c-snow);
   transition: all var(--transition-fast);
   position: relative;
   margin-top: 2px;
@@ -270,7 +275,7 @@
 .form-checkbox input:checked ~ .form-checkbox-custom,
 .form-radio input:checked ~ .form-radio-custom {
   background-color: var(--c-accent);
-  border-color: var(--c-accent);
+  border-color: var(--c-accent-dark);
 }
 
 .form-checkbox input:checked ~ .form-checkbox-custom::after {
@@ -279,7 +284,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--c-bg);
+  color: var(--c-snow);
   font-size: 14px;
   font-weight: bold;
 }
@@ -292,7 +297,7 @@
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  background-color: var(--c-bg);
+  background-color: var(--c-snow);
   border-radius: 50%;
 }
 
@@ -300,7 +305,7 @@
 .form-radio-label {
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: var(--c-text-on-dark);
+  color: var(--c-text);
 }
 
 /* Form Success Message */
@@ -381,7 +386,7 @@
   background: none;
   border: none;
   font-size: 2rem;
-  color: var(--c-text-on-dark);
+  color: var(--c-text);
   cursor: pointer;
   padding: 0;
   width: 32px;
@@ -421,13 +426,13 @@
 
 .section-title {
   font-size: clamp(2rem, 4vw, 3.5rem);
-  color: var(--c-soft);
+  color: var(--c-accent-dark);
   margin-bottom: var(--spacing-sm);
 }
 
 .section-description {
   font-size: 1.125rem;
-  color: var(--c-text-on-dark);
+  color: var(--c-text);
   max-width: 700px;
   margin: 0 auto;
 }
