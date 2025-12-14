@@ -1,0 +1,9 @@
+Fonts:
+
+Headlines (H1-H3): Summer Bold
+Fliesstext und Nav: Poppins Regular
+Buttons/CTA: Poppins Semibold
+
+Font Embed of Poppins:
+<link rel="stylesheet" href="https://use.typekit.net/loi3dsd.css">
+

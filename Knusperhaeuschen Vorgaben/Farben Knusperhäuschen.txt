@@ -1,0 +1,18 @@
+Farben Knusperhäuschen
+
+Primärfarben
+181B1C: Haupt-Hintergrund, Hero-
+Overlay, Navigation
+
+DADADA: Text auf dunklem Grund, UI-
+Elemente, Flächen
+
+EED070: Markenakzente, Highlights, Icons,
+CTAs
+
+Sekundärfarben:
+fffefa: Fliesstext auf dunklem Grund,
+Buttons
+
+C5A347: Hover-Zustände, Hintergründe in
+Cards
