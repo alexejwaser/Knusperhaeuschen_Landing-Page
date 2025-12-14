@@ -13,6 +13,7 @@
   const state = {
     mode: null, // 'onsite' or 'delivery'
     size: 'small',
+    assembly: 'diy', // 'diy' or 'prebuilt'
     style: 'classic',
     toppings: [],
     customText: '',
@@ -133,6 +134,55 @@
   };
 
   // ============================================
+  // STEP NAVIGATION
+  // ============================================
+
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  const goToStep = (stepNumber) => {
+    if (stepNumber < 1 || stepNumber > totalSteps) return;
+
+    // Hide all steps
+    const allSteps = deliveryFlow.querySelectorAll('.konfigurator-step');
+    allSteps.forEach(step => step.classList.remove('active'));
+
+    // Show target step
+    const targetStep = deliveryFlow.querySelector(`.konfigurator-step[data-step="${stepNumber}"]`);
+    if (targetStep) {
+      targetStep.classList.add('active');
+    }
+
+    // Update progress indicator
+    const progressSteps = deliveryFlow.querySelectorAll('.konfigurator-progress-step');
+    progressSteps.forEach((step, index) => {
+      const stepNum = index + 1;
+      if (stepNum < stepNumber) {
+        step.classList.add('completed');
+        step.classList.remove('active');
+      } else if (stepNum === stepNumber) {
+        step.classList.add('active');
+        step.classList.remove('completed');
+      } else {
+        step.classList.remove('active', 'completed');
+      }
+    });
+
+    currentStep = stepNumber;
+
+    // Update price display
+    updatePrice();
+
+    // Scroll to top of configurator
+    setTimeout(() => {
+      const konfigurator = document.getElementById('konfigurator');
+      if (konfigurator) {
+        konfigurator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
+  // ============================================
   // DELIVERY FLOW - CONFIGURATION & PRICING
   // ============================================
 
@@ -142,6 +192,16 @@
     sizeInputs.forEach(input => {
       input.addEventListener('change', (e) => {
         state.size = e.target.value;
+        updatePrice();
+        updatePreview();
+      });
+    });
+
+    // Assembly selection (DIY vs Pre-built)
+    const assemblyInputs = deliveryFlow.querySelectorAll('input[name="assembly"]');
+    assemblyInputs.forEach(input => {
+      input.addEventListener('change', (e) => {
+        state.assembly = e.target.value;
         updatePrice();
         updatePreview();
       });
@@ -182,8 +242,65 @@
       });
     }
 
+    // Step Navigation Buttons
+    // Step 1
+    const nextStep1 = deliveryFlow.querySelector('#nextStep1');
+    if (nextStep1) {
+      nextStep1.addEventListener('click', () => goToStep(2));
+    }
+
+    // Step 2
+    const prevStep2 = deliveryFlow.querySelector('#prevStep2');
+    const nextStep2 = deliveryFlow.querySelector('#nextStep2');
+    if (prevStep2) {
+      prevStep2.addEventListener('click', () => goToStep(1));
+    }
+    if (nextStep2) {
+      nextStep2.addEventListener('click', () => goToStep(3));
+    }
+
+    // Step 3
+    const prevStep3 = deliveryFlow.querySelector('#prevStep3');
+    const nextStep3 = deliveryFlow.querySelector('#nextStep3');
+    if (prevStep3) {
+      prevStep3.addEventListener('click', () => goToStep(2));
+    }
+    if (nextStep3) {
+      nextStep3.addEventListener('click', () => goToStep(4));
+    }
+
+    // Step 4
+    const prevStep4 = deliveryFlow.querySelector('#prevStep4');
+    const nextStep4 = deliveryFlow.querySelector('#nextStep4');
+    if (prevStep4) {
+      prevStep4.addEventListener('click', () => goToStep(3));
+    }
+    if (nextStep4) {
+      nextStep4.addEventListener('click', () => goToStep(5));
+    }
+
+    // Step 5
+    const prevStep5 = deliveryFlow.querySelector('#prevStep5');
+    const finishConfig = deliveryFlow.querySelector('#finishConfig');
+    if (prevStep5) {
+      prevStep5.addEventListener('click', () => goToStep(4));
+    }
+    if (finishConfig) {
+      finishConfig.addEventListener('click', () => {
+        // Open order form modal
+        const orderModal = document.getElementById('orderModal');
+        if (orderModal) {
+          orderModal.classList.add('is-visible');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
     // Initialize price
     updatePrice();
+
+    // Initialize first step
+    goToStep(1);
   };
 
   // ============================================
@@ -196,6 +313,12 @@
 
     // Calculate extras price
     let extrasPrice = 0;
+
+    // Add assembly price (Pre-built)
+    const selectedAssembly = deliveryFlow?.querySelector('input[name="assembly"]:checked');
+    if (selectedAssembly && selectedAssembly.dataset.price) {
+      extrasPrice += parseInt(selectedAssembly.dataset.price);
+    }
 
     // Add style price (Schneehüsli)
     const selectedStyle = deliveryFlow?.querySelector('input[name="style"]:checked');
@@ -221,6 +344,13 @@
   };
 
   const updatePriceDisplay = () => {
+    // Update current price in steps area
+    const currentPriceDisplay = document.getElementById('currentPriceDisplay');
+    if (currentPriceDisplay) {
+      currentPriceDisplay.textContent = `CHF ${state.price.total}.-`;
+    }
+
+    // Update price breakdown in preview area
     const priceBase = document.getElementById('priceBase');
     const priceExtras = document.getElementById('priceExtras');
     const priceExtrasRow = document.getElementById('priceExtrasRow');

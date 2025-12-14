@@ -10,6 +10,7 @@
   /* Brand Colors - Light Theme */
   --c-bg: #FFFEFA; /* Cremiges Weiß als Haupthintergrund */
   --c-bg-secondary: #FFF8E7; /* Warmer Sekundärhintergrund */
+  --c-bg-tertiary: #FFF3D6; /* Noch wärmerer Hintergrund für Cards */
   --c-text: #3D2817; /* Dunkles Braun für Text (wie Lebkuchen) */
   --c-text-soft: #6B4E3D; /* Helleres Braun für sekundären Text */
   --c-accent: #C5A347; /* Gold/Honig als Akzentfarbe */
@@ -118,23 +119,29 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--c-accent-dark);
 }
 
-/* Vergrößerte Summer-Schrift (besonders für Mobile) */
+/* Vergrößerte Summer-Schrift mit erhöhter Stärke */
 h1 {
-  font-size: clamp(3rem, 8vw, 6rem); /* Größer als vorher */
+  font-size: clamp(3.5rem, 10vw, 7rem); /* Noch größer für bessere Sichtbarkeit */
   letter-spacing: 0.02em;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(61, 40, 23, 0.1); /* Subtiler Schatten für bessere Lesbarkeit */
 }
 
 h2 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Größer als vorher */
+  font-size: clamp(3rem, 7vw, 5.5rem); /* Noch größer */
   letter-spacing: 0.01em;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(61, 40, 23, 0.1);
 }
 
 h3 {
-  font-size: clamp(2rem, 4vw, 3rem); /* Größer als vorher */
+  font-size: clamp(2.25rem, 5vw, 3.5rem); /* Noch größer */
+  font-weight: bold;
 }
 
 h4 {
-  font-size: clamp(1.75rem, 3vw, 2.5rem); /* Größer als vorher */
+  font-size: clamp(2rem, 4vw, 3rem); /* Noch größer */
+  font-weight: bold;
 }
 
 h5 {

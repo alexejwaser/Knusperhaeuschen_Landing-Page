@@ -30,6 +30,24 @@
   text-align: center;
   position: relative;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  animation: videoFadeOut 0.25s ease 2.75s forwards; /* Fade out in last 0.25s of 3s video */
+}
+
+@keyframes videoFadeOut {
+  to {
+    opacity: 0;
+  }
 }
 
 .intro-house {
@@ -407,7 +425,7 @@
    ANGEBOT SECTION
    ============================================ */
 .angebot {
-  background-color: var(--c-bg-secondary);
+  background-color: var(--c-bg); /* Heller Haupthintergrund */
   position: relative;
 }
 
@@ -480,11 +498,7 @@
    STORY / ÜBER UNS - Lebkuchenhaus-Layout
    ============================================ */
 .story {
-  background: linear-gradient(
-    135deg,
-    rgba(238, 208, 112, 0.05) 0%,
-    var(--c-bg) 100%
-  );
+  background-color: var(--c-bg-secondary); /* Warmer Sekundärhintergrund für besseren Kontrast */
 }
 
 .story-house-layout {
@@ -639,74 +653,209 @@
    KONFIGURATOR
    ============================================ */
 .konfigurator {
-  background-color: var(--c-bg-secondary);
+  background-color: var(--c-bg); /* Heller Haupthintergrund */
 }
 
-.konfigurator-wrapper {
+/* Desktop: Side-by-side layout */
+.konfigurator-wrapper.konfigurator-delivery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
   margin-top: var(--spacing-lg);
+  align-items: flex-start;
 }
 
+/* Tablet and below: Stacked layout */
 @media (max-width: 1024px) {
-  .konfigurator-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Mobile: Preview always visible in bottom half */
-@media (max-width: 768px) {
   .konfigurator-wrapper.konfigurator-delivery {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 80px); /* Full viewport minus nav */
-    position: relative;
-  }
-
-  .konfigurator-options {
-    flex: 1;
-    overflow-y: auto;
-    max-height: 50vh;
-    margin-bottom: 0;
-  }
-
-  .konfigurator-preview {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50vh;
-    background-color: rgba(24, 27, 28, 0.98);
-    border-top: 2px solid var(--c-accent);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    z-index: 100;
-    overflow-y: auto;
-  }
-
-  .konfigurator-preview-canvas {
-    max-width: 300px;
-    height: 200px;
+    gap: var(--spacing-lg);
   }
 }
 
-.konfigurator-options {
+/* Step-by-Step Container */
+.konfigurator-steps-container {
   background-color: var(--c-bg-secondary);
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(197, 163, 71, 0.2);
 }
 
-.konfigurator-option-group {
+@media (max-width: 1024px) {
+  .konfigurator-steps-container {
+    padding: var(--spacing-md);
+    order: 2;
+  }
+}
+
+/* Progress Indicator */
+.konfigurator-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid rgba(197, 163, 71, 0.2);
 }
 
-.konfigurator-option-group:last-child {
-  margin-bottom: 0;
+@media (max-width: 768px) {
+  .konfigurator-progress {
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 0;
+    padding-bottom: var(--spacing-sm);
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
-.konfigurator-option-title {
-  font-size: 1.25rem;
+.konfigurator-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  opacity: 0.4;
+  transition: opacity var(--transition-base);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .konfigurator-progress-step {
+    min-width: 60px;
+  }
+}
+
+.konfigurator-progress-step.active,
+.konfigurator-progress-step.completed {
+  opacity: 1;
+}
+
+.progress-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--c-bg-secondary);
+  border: 2px solid var(--c-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--c-accent);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .progress-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+}
+
+.konfigurator-progress-step.active .progress-step-number {
+  background-color: var(--c-accent);
+  color: var(--c-snow);
+  transform: scale(1.1);
+}
+
+.konfigurator-progress-step.completed .progress-step-number {
+  background-color: var(--c-accent-dark);
+  color: var(--c-snow);
+  border-color: var(--c-accent-dark);
+}
+
+.konfigurator-progress-step.completed .progress-step-label {
+  color: var(--c-accent-dark);
+}
+
+.progress-step-label {
+  font-size: 0.75rem;
+  color: var(--c-text-soft);
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .progress-step-label {
+    font-size: 0.625rem;
+  }
+}
+
+.konfigurator-progress-step.active .progress-step-label {
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+.konfigurator-progress-line {
+  flex: 1;
+  min-width: 20px;
+  height: 2px;
+  background-color: rgba(197, 163, 71, 0.2);
+  margin: 0 var(--spacing-xs);
+  align-self: center;
+  margin-top: -20px;
+}
+
+@media (max-width: 768px) {
+  .konfigurator-progress-line {
+    flex: 0 0 16px;
+    min-width: 16px;
+    margin: 0 4px;
+  }
+}
+
+/* Current Price Display - Subtle */
+.konfigurator-current-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(197, 163, 71, 0.1);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid rgba(197, 163, 71, 0.2);
+}
+
+.current-price-label {
+  font-weight: 500;
+  color: var(--c-text-soft);
+  font-size: 0.875rem;
+}
+
+.current-price-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--c-accent);
+}
+
+/* Step Content */
+.konfigurator-step-content {
+  position: relative;
+}
+
+.konfigurator-step {
+  display: none;
+  animation: stepFadeIn 0.3s ease;
+}
+
+.konfigurator-step.active {
+  display: block;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.konfigurator-step-title {
+  font-size: 1.5rem;
   color: var(--c-accent);
   margin-bottom: var(--spacing-md);
 }
@@ -749,6 +898,29 @@
   color: var(--c-bg);
 }
 
+/* Step Actions */
+.konfigurator-step-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.konfigurator-step-actions .btn {
+  flex: 1;
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .konfigurator-step-actions {
+    flex-direction: column;
+  }
+
+  .konfigurator-step-actions .btn {
+    max-width: 100%;
+  }
+}
+
 .konfigurator-preview {
   position: sticky;
   top: 100px;
@@ -759,21 +931,31 @@
   text-align: center;
 }
 
+@media (max-width: 1024px) {
+  .konfigurator-preview {
+    position: static;
+    order: 1;
+    padding: var(--spacing-md);
+  }
+}
+
 .konfigurator-preview-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: var(--c-accent);
   margin-bottom: var(--spacing-md);
+  font-weight: 600;
 }
 
 .konfigurator-preview-canvas {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  height: 400px;
+  max-width: 500px;
+  aspect-ratio: 4 / 5; /* Fixed 4:5 aspect ratio for PNG overlays */
   margin: 0 auto var(--spacing-md);
-  background-color: var(--c-bg-secondary);
-  border-radius: var(--radius-lg);
+  background-color: var(--c-bg);
+  border-radius: var(--radius-md);
   overflow: hidden;
+  border: 1px solid rgba(197, 163, 71, 0.15);
 }
 
 .konfigurator-preview-layer {
@@ -782,7 +964,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* Will scale PNG overlays to fill 100% */
   transition: opacity var(--transition-base);
 }
 
@@ -962,11 +1144,7 @@
    STANDORT
    ============================================ */
 .standort {
-  background: linear-gradient(
-    to bottom,
-    rgba(238, 208, 112, 0.03) 0%,
-    rgba(24, 27, 28, 0) 100%
-  );
+  background-color: var(--c-bg-secondary); /* Warmer Sekundärhintergrund */
 }
 
 .standort-content {
@@ -1027,7 +1205,7 @@
    COMMUNITY
    ============================================ */
 .community {
-  background-color: var(--c-bg-secondary);
+  background-color: var(--c-bg); /* Heller Haupthintergrund */
   overflow: hidden;
 }
 
@@ -1037,6 +1215,12 @@
   margin-top: var(--spacing-lg);
   position: relative;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .community-ticker-wrapper {
+    max-height: 100vh;
+  }
 }
 
 /* Horizontal ticker for desktop */
@@ -1081,7 +1265,7 @@
 .community-item {
   flex-shrink: 0;
   width: 280px;
-  height: 280px;
+  height: 350px; /* 4:5 aspect ratio (280 * 1.25) */
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
@@ -1091,8 +1275,8 @@
 
 @media (max-width: 768px) {
   .community-item {
-    width: 100%;
-    height: 200px;
+    width: 80vw;
+    height: calc(80vw * 1.25); /* 4:5 aspect ratio maintained */
   }
 }
 
@@ -1100,10 +1284,60 @@
   transform: scale(1.05);
 }
 
-.community-item img {
+/* Social media post image (background) */
+.social-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 1;
+}
+
+/* Social media platform icon (top-left corner) */
+.social-icon {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+@media (max-width: 768px) {
+  .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Username overlay (bottom center) */
+.social-username {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background-color: rgba(61, 40, 23, 0.85);
+  color: var(--c-snow);
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .social-username {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+  }
 }
 
 .community-cta {
@@ -1122,11 +1356,7 @@
    GEWINNSPIEL
    ============================================ */
 .gewinnspiel {
-  background: linear-gradient(
-    135deg,
-    rgba(238, 208, 112, 0.05) 0%,
-    rgba(24, 27, 28, 0) 100%
-  );
+  background-color: var(--c-bg-secondary); /* Warmer Sekundärhintergrund */
 }
 
 .gewinnspiel-form {

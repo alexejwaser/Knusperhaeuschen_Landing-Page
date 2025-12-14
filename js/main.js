@@ -275,25 +275,24 @@
 
   if (closeOrderModalBtn) {
     closeOrderModalBtn.addEventListener('click', () => {
-      orderModal.classList.remove('is-active');
+      orderModal.classList.remove('is-visible');
       document.body.style.overflow = '';
     });
   }
 
   // Close modal on overlay click
-  if (orderModal) {
-    orderModal.addEventListener('click', (e) => {
-      if (e.target === orderModal) {
-        orderModal.classList.remove('is-active');
-        document.body.style.overflow = '';
-      }
+  const checkoutOverlay = document.getElementById('checkoutOverlay');
+  if (checkoutOverlay) {
+    checkoutOverlay.addEventListener('click', () => {
+      orderModal.classList.remove('is-visible');
+      document.body.style.overflow = '';
     });
   }
 
   // Close modal on ESC key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && orderModal.classList.contains('is-active')) {
-      orderModal.classList.remove('is-active');
+    if (e.key === 'Escape' && orderModal && orderModal.classList.contains('is-visible')) {
+      orderModal.classList.remove('is-visible');
       document.body.style.overflow = '';
     }
   });
@@ -308,13 +307,6 @@
 
       let isValid = true;
 
-      // Name validation
-      const name = document.getElementById('order-name').value.trim();
-      if (!name) {
-        showError('order-name', 'Bitte gib deinen Namen ein.');
-        isValid = false;
-      }
-
       // Email validation
       const email = document.getElementById('order-email').value.trim();
       if (!email) {
@@ -325,14 +317,53 @@
         isValid = false;
       }
 
+      // First name validation
+      const firstname = document.getElementById('order-firstname').value.trim();
+      if (!firstname) {
+        showError('order-firstname', 'Bitte gib deinen Vornamen ein.');
+        isValid = false;
+      }
+
+      // Last name validation
+      const lastname = document.getElementById('order-lastname').value.trim();
+      if (!lastname) {
+        showError('order-lastname', 'Bitte gib deinen Nachnamen ein.');
+        isValid = false;
+      }
+
+      // Address validation
+      const address = document.getElementById('order-address').value.trim();
+      if (!address) {
+        showError('order-address', 'Bitte gib deine Adresse ein.');
+        isValid = false;
+      }
+
+      // ZIP validation
+      const zip = document.getElementById('order-zip').value.trim();
+      if (!zip) {
+        showError('order-zip', 'Bitte gib deine PLZ ein.');
+        isValid = false;
+      }
+
+      // City validation
+      const city = document.getElementById('order-city').value.trim();
+      if (!city) {
+        showError('order-city', 'Bitte gib deinen Ort ein.');
+        isValid = false;
+      }
+
       if (!isValid) {
         return;
       }
 
       // TODO: Submit order to backend
       console.log('Order submission:', {
-        name,
         email,
+        firstname,
+        lastname,
+        address,
+        zip,
+        city,
         phone: document.getElementById('order-phone').value,
         message: document.getElementById('order-message').value,
         configuration: window.getConfiguration ? window.getConfiguration() : null
@@ -356,6 +387,10 @@
   // Update order summary function (called from configurator.js)
   window.updateOrderSummary = () => {
     const orderSummary = document.getElementById('orderSummary');
+    const checkoutSubtotal = document.getElementById('checkoutSubtotal');
+    const checkoutShipping = document.getElementById('checkoutShipping');
+    const checkoutTotal = document.getElementById('checkoutTotal');
+
     if (!orderSummary || !window.getConfiguration) return;
 
     const config = window.getConfiguration();
@@ -366,10 +401,15 @@
       'large': 'Groß'
     };
 
+    const assemblyLabels = {
+      'diy': 'DIY-Box (Selbst aufbauen)',
+      'prebuilt': 'Fertig aufgebaut'
+    };
+
     const styleLabels = {
       'classic': 'Klassisch',
       'modern': 'Modern',
-      'winter': 'Winterwald'
+      'winter': 'Schneehüsli ❄️'
     };
 
     const toppingLabels = {
@@ -378,21 +418,58 @@
       'figures': 'Figuren'
     };
 
-    const toppingsText = config.toppings.length > 0
-      ? config.toppings.map(t => toppingLabels[t]).join(', ')
-      : 'Keine';
-
-    let summaryHTML = `
-      <strong>Größe:</strong> ${sizeLabels[config.size]}<br>
-      <strong>Deko-Style:</strong> ${styleLabels[config.style]}<br>
-      <strong>Extras:</strong> ${toppingsText}
+    // Build product details HTML
+    let detailsHTML = `
+      <div class="checkout-product-item">
+        <div class="checkout-product-info">
+          <div class="checkout-product-name">Lebkuchenhaus - ${sizeLabels[config.size]}</div>
+          <div class="checkout-product-details">
+            ${assemblyLabels[config.assembly]}<br>
+            Style: ${styleLabels[config.style]}
+          </div>
+        </div>
+        <div class="checkout-product-price">CHF ${config.price.base}.-</div>
+      </div>
     `;
 
-    if (config.customText) {
-      summaryHTML += `<br><strong>Nachricht:</strong> "${config.customText}"`;
+    // Add toppings if any
+    if (config.toppings && config.toppings.length > 0) {
+      config.toppings.forEach(topping => {
+        const prices = { snow: 5, lights: 8, figures: 6 };
+        detailsHTML += `
+          <div class="checkout-product-item">
+            <div class="checkout-product-info">
+              <div class="checkout-product-name">${toppingLabels[topping]}</div>
+            </div>
+            <div class="checkout-product-price">CHF ${prices[topping]}.-</div>
+          </div>
+        `;
+      });
     }
 
-    orderSummary.innerHTML = summaryHTML;
+    // Add custom text if present
+    if (config.customText && config.customText.trim()) {
+      detailsHTML += `
+        <div class="checkout-product-item">
+          <div class="checkout-product-info">
+            <div class="checkout-product-name">Personalisierung</div>
+            <div class="checkout-product-details">"${config.customText}"</div>
+          </div>
+          <div class="checkout-product-price">CHF 3.-</div>
+        </div>
+      `;
+    }
+
+    orderSummary.innerHTML = detailsHTML;
+
+    // Update totals
+    const shipping = 8.50;
+    const subtotal = config.price.total;
+    const total = subtotal + shipping;
+
+    if (checkoutSubtotal) checkoutSubtotal.textContent = `CHF ${subtotal.toFixed(2)}`;
+    if (checkoutShipping) checkoutShipping.textContent = `CHF ${shipping.toFixed(2)}`;
+    if (checkoutTotal) checkoutTotal.textContent = `CHF ${total.toFixed(2)}`;
   };
 
   // ============================================

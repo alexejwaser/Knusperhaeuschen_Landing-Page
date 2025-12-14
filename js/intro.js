@@ -12,6 +12,7 @@
   // Get elements
   const intro = document.getElementById('intro');
   const introSkip = document.getElementById('introSkip');
+  const introVideo = document.getElementById('introVideo');
 
   if (!intro) return;
 
@@ -35,7 +36,15 @@
   }
 
   // Auto-hide timeout
-  const autoHideTimeout = setTimeout(hideIntro, autoHideDuration);
+  let autoHideTimeout = setTimeout(hideIntro, autoHideDuration);
+
+  // Listen for video end event
+  if (introVideo) {
+    introVideo.addEventListener('ended', () => {
+      clearTimeout(autoHideTimeout);
+      hideIntro();
+    });
+  }
 
   // Skip button click handler
   if (introSkip) {

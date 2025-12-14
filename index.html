@@ -1,786 +1,1632 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Knusperhäuschen - Märchenhafte Lebkuchenhäuser zum Selberbauen am Weihnachtsstand oder als DIY-Geschenkbox. Erlebe handgemachte Weihnachtsfreude in Luzern.">
-  <meta name="keywords" content="Lebkuchenhaus, Weihnachten, Luzern, DIY, Geschenk, Knusperhäuschen, Blauring">
-  <title>Knusperhäuschen - Märchenhafte Momente erleben</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Knusperhäuschen - Märchenhafte Lebkuchenhäuser zum Selberbauen am Weihnachtsstand oder als DIY-Geschenkbox. Erlebe handgemachte Weihnachtsfreude in Luzern."
+    />
+    <meta
+      name="keywords"
+      content="Lebkuchenhaus, Weihnachten, Luzern, DIY, Geschenk, Knusperhäuschen, Blauring"
+    />
+    <title>Knusperhäuschen - Märchenhafte Momente erleben</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- Poppins Font via Typekit -->
-  <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <!-- Poppins Font via Typekit -->
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css" />
 
-  <!-- Google Fonts Fallback -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-</head>
-<body>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
+  </head>
+  <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-  <!-- Skip Link for Accessibility -->
-  <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
-
-  <!-- ============================================
+    <!-- ============================================
        LOADING SCREEN / INTRO
        ============================================ -->
-  <div class="intro-overlay" id="intro">
-    <div class="intro-content">
-      <div class="intro-house" aria-hidden="true">
-        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Simple gingerbread house illustration -->
-          <path d="M100 20 L170 80 L170 160 L30 160 L30 80 Z" fill="#8B4513" stroke="#EED070" stroke-width="2"/>
-          <path d="M100 20 L40 70 L160 70 Z" fill="#A0522D" stroke="#EED070" stroke-width="2"/>
-          <rect x="75" y="110" width="25" height="35" fill="#654321" stroke="#EED070" stroke-width="2"/>
-          <rect x="120" y="90" width="25" height="25" fill="#87CEEB" stroke="#EED070" stroke-width="2"/>
-          <circle cx="88" cy="130" r="3" fill="#EED070"/>
-        </svg>
+    <div class="intro-overlay" id="intro">
+      <div class="intro-content">
+        <video class="intro-video" autoplay muted playsinline id="introVideo">
+          <source
+            src="assets/video/Intro Knusperhaeuschen.webm"
+            type="video/webm"
+          />
+          <!-- Fallback für ältere Browser -->
+          <div class="intro-house" aria-hidden="true">
+            <svg
+              viewBox="0 0 200 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Simple gingerbread house illustration -->
+              <path
+                d="M100 20 L170 80 L170 160 L30 160 L30 80 Z"
+                fill="#8B4513"
+                stroke="#EED070"
+                stroke-width="2"
+              />
+              <path
+                d="M100 20 L40 70 L160 70 Z"
+                fill="#A0522D"
+                stroke="#EED070"
+                stroke-width="2"
+              />
+              <rect
+                x="75"
+                y="110"
+                width="25"
+                height="35"
+                fill="#654321"
+                stroke="#EED070"
+                stroke-width="2"
+              />
+              <rect
+                x="120"
+                y="90"
+                width="25"
+                height="25"
+                fill="#87CEEB"
+                stroke="#EED070"
+                stroke-width="2"
+              />
+              <circle cx="88" cy="130" r="3" fill="#EED070" />
+            </svg>
+          </div>
+        </video>
       </div>
-      <p class="intro-text">Willkommen im Knusperhäuschen...</p>
     </div>
-    <button class="intro-skip" id="introSkip" aria-label="Intro überspringen">Überspringen</button>
-  </div>
 
-  <!-- ============================================
+    <!-- ============================================
        NAVIGATION
        ============================================ -->
-  <nav class="main-nav" id="mainNav" role="navigation" aria-label="Hauptnavigation">
-    <div class="container nav-container">
-      <a href="#hero" class="nav-logo" aria-label="Knusperhäuschen Startseite">
-        <img src="assets/img/Logo Schwarz.svg" alt="Knusperhäuschen Logo" class="nav-logo-icon">
-      </a>
+    <nav
+      class="main-nav"
+      id="mainNav"
+      role="navigation"
+      aria-label="Hauptnavigation"
+    >
+      <div class="container nav-container">
+        <a
+          href="#hero"
+          class="nav-logo"
+          aria-label="Knusperhäuschen Startseite"
+        >
+          <img
+            src="assets/img/Logo Schwarz.svg"
+            alt="Knusperhäuschen Logo"
+            class="nav-logo-icon"
+          />
+        </a>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Navigation öffnen" aria-expanded="false">
-        <span class="nav-toggle-icon"></span>
-      </button>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Navigation öffnen"
+          aria-expanded="false"
+        >
+          <span class="nav-toggle-icon"></span>
+        </button>
 
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#angebot" class="nav-menu-link">Angebot</a></li>
-        <li><a href="#story" class="nav-menu-link">Über uns</a></li>
-        <li><a href="#konfigurator" class="nav-menu-link">Konfigurator</a></li>
-        <li><a href="#standort" class="nav-menu-link">Standort</a></li>
-        <li><a href="#gewinnspiel" class="nav-menu-link">Gewinnspiel</a></li>
-        <li><a href="#contact" class="nav-menu-link">Kontakt</a></li>
-      </ul>
-    </div>
-  </nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#angebot" class="nav-menu-link">Angebot</a></li>
+          <li><a href="#story" class="nav-menu-link">Über uns</a></li>
+          <li>
+            <a href="#konfigurator" class="nav-menu-link">Konfigurator</a>
+          </li>
+          <li><a href="#standort" class="nav-menu-link">Standort</a></li>
+          <li><a href="#gewinnspiel" class="nav-menu-link">Gewinnspiel</a></li>
+          <li><a href="#contact" class="nav-menu-link">Kontakt</a></li>
+        </ul>
+      </div>
+    </nav>
 
-  <!-- ============================================
+    <!-- ============================================
        MAIN CONTENT
        ============================================ -->
-  <main id="main-content">
-
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero">
-      <!-- TODO: Add hero video/animation -->
-      <!-- <video class="hero-video" autoplay muted loop playsinline>
+    <main id="main-content">
+      <!-- HERO SECTION -->
+      <section class="hero" id="hero">
+        <!-- TODO: Add hero video/animation -->
+        <!-- <video class="hero-video" autoplay muted loop playsinline>
         <source src="assets/video/hero.mp4" type="video/mp4">
       </video> -->
-      <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="container hero-content">
-        <h1 class="hero-title">Märchenhafte Momente erleben</h1>
-        <p class="hero-subtitle">
-          Baue dein eigenes Knusperhäuschen am Weihnachtsstand in Luzern oder stelle dein individuelles Geschenkset zusammen. Handgemachte Lebkuchenhäuser voller Zauber und Kreativität.
-        </p>
-        <div class="hero-cta">
-          <a href="#konfigurator" class="btn btn-primary btn-large">Platz reservieren</a>
-          <a href="#angebot" class="btn btn-secondary btn-large">So funktioniert's</a>
-        </div>
-      </div>
-
-      <a href="#angebot" class="hero-scroll" aria-label="Zum Angebot scrollen">
-        <span aria-hidden="true">↓</span>
-      </a>
-    </section>
-
-    <!-- ANGEBOT SECTION -->
-    <section class="angebot reveal" id="angebot">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-subtitle">Unser Angebot</p>
-          <h2 class="section-title">Drei Wege zu deinem Knusperhäuschen</h2>
-          <p class="section-description">
-            Ob vor Ort erleben, selbst gestalten oder fertig verschenken - wähle das Erlebnis, das zu dir passt.
+        <div class="container hero-content">
+          <h1 class="hero-title">Märchenhafte Momente erleben</h1>
+          <p class="hero-subtitle">
+            Baue dein eigenes Knusperhäuschen am Weihnachtsstand in Luzern oder
+            stelle dein individuelles Geschenkset zusammen. Handgemachte
+            Lebkuchenhäuser voller Zauber und Kreativität.
           </p>
-        </div>
-
-        <!-- 3-Step Process -->
-        <div class="angebot-steps">
-          <div class="angebot-step">
-            <div class="angebot-step-icon">1</div>
-            <span>Auswählen</span>
-          </div>
-          <div class="angebot-step-arrow" aria-hidden="true">→</div>
-
-          <div class="angebot-step">
-            <div class="angebot-step-icon">2</div>
-            <span>Gestalten</span>
-          </div>
-          <div class="angebot-step-arrow" aria-hidden="true">→</div>
-
-          <div class="angebot-step">
-            <div class="angebot-step-icon">3</div>
-            <span>Geniessen</span>
+          <div class="hero-cta">
+            <a href="#konfigurator" class="btn btn-primary btn-large"
+              >Platz reservieren</a
+            >
+            <a href="#angebot" class="btn btn-secondary btn-large"
+              >So funktioniert's</a
+            >
           </div>
         </div>
 
-        <!-- Angebots-Karten -->
-        <div class="card-grid">
-          <!-- Marktstand-Erlebnis -->
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">🎪</div>
-            <h3 class="card-title">Vor Ort bauen</h3>
-            <p class="card-text">
-              Besuche uns am Weihnachtsstand in der Markthalle Luzern. Unterstützt vom Blauring Luzern begleiten wir dich beim Bauen und Dekorieren deines Lebkuchenhauses aus regionalem Birnel und Freilandeiern. Perfekt für Familien und Gruppen!
+        <a
+          href="#angebot"
+          class="hero-scroll"
+          aria-label="Zum Angebot scrollen"
+        >
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+
+      <!-- ANGEBOT SECTION -->
+      <section class="angebot reveal" id="angebot">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-subtitle">Unser Angebot</p>
+            <h2 class="section-title">Drei Wege zu deinem Knusperhäuschen</h2>
+            <p class="section-description">
+              Ob vor Ort erleben, selbst gestalten oder fertig verschenken -
+              wähle das Erlebnis, das zu dir passt.
             </p>
-            <a href="#konfigurator" class="btn btn-secondary mt-md">Termin reservieren</a>
-          </article>
+          </div>
 
-          <!-- DIY-Box -->
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">🎁</div>
-            <h3 class="card-title">Nach Hause bestellen</h3>
-            <p class="card-text">
-              Stelle deine individuelle DIY-Box zusammen: Wähle Größe, Deko-Style und personalisierte Häuschen-Täfelchen. Mit regionalem Birnel und Freilandeiern gebacken. Auch als limitierte Winter-Edition "Schneehüsli" erhältlich!
-            </p>
-            <a href="#konfigurator" class="btn btn-secondary mt-md">Jetzt konfigurieren</a>
-          </article>
+          <!-- 3-Step Process -->
+          <div class="angebot-steps">
+            <div class="angebot-step">
+              <div class="angebot-step-icon">1</div>
+              <span>Auswählen</span>
+            </div>
+            <div class="angebot-step-arrow" aria-hidden="true">→</div>
 
-          <!-- Fertiges Häuschen -->
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">🏠</div>
-            <h3 class="card-title">Fertige Geschenk-Sets</h3>
-            <p class="card-text">
-              Möchtest du ein bereits fertig dekoriertes Knusperhäuschen verschenken? Unsere Sets sind liebevoll handgemacht, mit regionalem Birnel gebacken und sofort verschenkbereit. Zusätzlich: Zuckerdekor einzeln erhältlich!
-            </p>
-            <a href="#gewinnspiel" class="btn btn-secondary mt-md">Mehr erfahren</a>
-          </article>
-        </div>
+            <div class="angebot-step">
+              <div class="angebot-step-icon">2</div>
+              <span>Gestalten</span>
+            </div>
+            <div class="angebot-step-arrow" aria-hidden="true">→</div>
 
-        <!-- Erklärvideo -->
-        <div class="angebot-video mt-lg">
-          <h3 class="text-center mb-md">Schau dir an, wie's funktioniert</h3>
-          <!-- TODO: Add explanation video -->
-          <div style="width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; background: rgba(238,208,112,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--c-accent); font-size: 3rem;">
-            📹
-            <p style="font-size: 1rem; margin-left: 1rem;">Video kommt bald</p>
+            <div class="angebot-step">
+              <div class="angebot-step-icon">3</div>
+              <span>Geniessen</span>
+            </div>
+          </div>
+
+          <!-- Angebots-Karten -->
+          <div class="card-grid">
+            <!-- Marktstand-Erlebnis -->
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🎪</div>
+              <h3 class="card-title">Vor Ort bauen</h3>
+              <p class="card-text">
+                Besuche uns am Weihnachtsstand in der Markthalle Luzern.
+                Unterstützt vom Blauring Luzern begleiten wir dich beim Bauen
+                und Dekorieren deines Lebkuchenhauses aus regionalem Birnel und
+                Freilandeiern. Perfekt für Familien und Gruppen!
+              </p>
+              <a href="#konfigurator" class="btn btn-secondary mt-md"
+                >Termin reservieren</a
+              >
+            </article>
+
+            <!-- DIY-Box -->
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🎁</div>
+              <h3 class="card-title">Nach Hause bestellen</h3>
+              <p class="card-text">
+                Stelle dein Lebkuchenhaus individuell zusammen: Wähle Größe,
+                Deko-Style und personalisierte Häuschen-Täfelchen. Entscheide,
+                ob du es selbst aufbauen möchtest (DIY-Box) oder es fertig
+                aufgebaut geliefert bekommen willst. Mit regionalem Birnel und
+                Freilandeiern gebacken!
+              </p>
+              <a href="#konfigurator" class="btn btn-secondary mt-md"
+                >Jetzt konfigurieren</a
+              >
+            </article>
+
+            <!-- Fertiges Häuschen -->
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🏠</div>
+              <h3 class="card-title">Fertige Geschenk-Sets</h3>
+              <p class="card-text">
+                Möchtest du ein bereits fertig dekoriertes Knusperhäuschen
+                verschenken? Unsere Sets sind liebevoll handgemacht, mit
+                regionalem Birnel gebacken und sofort verschenkbereit.
+                Zusätzlich: Zuckerdekor einzeln erhältlich!
+              </p>
+              <a href="#konfigurator" class="btn btn-secondary mt-md"
+                >Jetzt konfigurieren</a
+              >
+            </article>
+          </div>
+
+          <!-- Erklärvideo -->
+          <div class="angebot-video mt-lg">
+            <h3 class="text-center mb-md">Schau dir an, wie's funktioniert</h3>
+            <!-- TODO: Add explanation video -->
+            <div
+              style="
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto;
+                aspect-ratio: 16/9;
+                background: rgba(238, 208, 112, 0.1);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--c-accent);
+                font-size: 3rem;
+              "
+            >
+              📹
+              <p style="font-size: 1rem; margin-left: 1rem">Video kommt bald</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- STORY / ÜBER UNS SECTION -->
-    <section class="story reveal" id="story">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-subtitle">Unsere Geschichte</p>
-          <h2 class="section-title">Von der Backstube zum Erlebnis</h2>
-          <p class="section-description">
-            Hinter Knusperhäuschen stehen Leonie und Olivia, ein junges Bäckerpaar aus der Zentralschweiz, das kürzlich eine traditionelle Bäckerei übernommen hat.
-          </p>
-        </div>
+      <!-- STORY / ÜBER UNS SECTION -->
+      <section class="story reveal" id="story">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-subtitle">Unsere Geschichte</p>
+            <h2 class="section-title">Von der Backstube zum Erlebnis</h2>
+            <p class="section-description">
+              Hinter Knusperhäuschen stehen Leonie und Olivia, ein junges
+              Bäckerpaar aus der Zentralschweiz, das kürzlich eine traditionelle
+              Bäckerei übernommen hat.
+            </p>
+          </div>
 
-        <!-- Lebkuchenhaus-Layout: Gründer im Fokus -->
-        <div class="story-house-layout">
-          <!-- Dach: Die Gründer -->
-          <div class="story-founders">
-            <div class="story-founder">
-              <div class="story-founder-photo" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;" aria-label="Leonie Foto">
-                👩‍🍳
+          <!-- Lebkuchenhaus-Layout: Gründer im Fokus -->
+          <div class="story-house-layout">
+            <!-- Dach: Die Gründer -->
+            <div class="story-founders">
+              <div class="story-founder">
+                <div
+                  class="story-founder-photo"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #eed070 0%,
+                      #c5a347 100%
+                    );
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 4rem;
+                  "
+                  aria-label="Leonie Foto"
+                >
+                  👩‍🍳
+                </div>
+                <h3 class="story-founder-name">Leonie</h3>
+                <p class="story-founder-role">Meisterbäckerin & Mitgründerin</p>
+                <p class="story-founder-text">
+                  "Backen ist für mich mehr als ein Handwerk - es ist eine
+                  Leidenschaft, die ich gerne mit Familien teile."
+                </p>
               </div>
-              <h3 class="story-founder-name">Leonie</h3>
-              <p class="story-founder-role">Meisterbäckerin & Mitgründerin</p>
-              <p class="story-founder-text">
-                "Backen ist für mich mehr als ein Handwerk - es ist eine Leidenschaft, die ich gerne mit Familien teile."
+
+              <div class="story-founder">
+                <div
+                  class="story-founder-photo"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #c5a347 0%,
+                      #eed070 100%
+                    );
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 4rem;
+                  "
+                  aria-label="Olivia Foto"
+                >
+                  👩‍🍳
+                </div>
+                <h3 class="story-founder-name">Olivia</h3>
+                <p class="story-founder-role">
+                  Konditormeisterin & Mitgründerin
+                </p>
+                <p class="story-founder-text">
+                  "Mit regionalem Birnel und Freilandeiern schaffen wir
+                  Genussmomente, die nachhaltig begeistern."
+                </p>
+              </div>
+            </div>
+
+            <!-- Wände: USPs in Fenster-Form -->
+            <div class="story-windows">
+              <div class="story-window">
+                <div class="story-window-icon">🌾</div>
+                <h4>Regional & Nachhaltig</h4>
+                <p>Lokales Birnel und Freilandeier aus der Zentralschweiz</p>
+              </div>
+
+              <div class="story-window">
+                <div class="story-window-icon">✋</div>
+                <h4>Handgemacht</h4>
+                <p>Jedes Häuschen mit Liebe zum Detail gefertigt</p>
+              </div>
+
+              <div class="story-window">
+                <div class="story-window-icon">🎨</div>
+                <h4>Spielerisch kreativ</h4>
+                <p>Backhandwerk zum Anfassen und Erleben</p>
+              </div>
+
+              <div class="story-window">
+                <div class="story-window-icon">❤️</div>
+                <h4>Familienfreundlich</h4>
+                <p>Genussmomente für Groß und Klein</p>
+              </div>
+            </div>
+
+            <!-- Fundament: Blauring Support -->
+            <div class="story-foundation">
+              <div class="story-support-badge">
+                <span class="story-support-icon">🤝</span>
+                <div class="story-support-text">
+                  <strong>Unterstützt vom Blauring Luzern</strong>
+                  <p>
+                    Gemeinsam schaffen wir unvergessliche Erlebnisse am
+                    Marktstand
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KONFIGURATOR SECTION -->
+      <section class="konfigurator reveal" id="konfigurator">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-subtitle">Dein Häuschen</p>
+            <h2 class="section-title">Interaktiver Konfigurator</h2>
+            <p class="section-description">
+              Gestalte dein individuelles Lebkuchenhaus - entweder vor Ort bei
+              uns oder bequem nach Hause bestellen.
+            </p>
+          </div>
+
+          <!-- Initial Choice: Vor Ort oder Nach Hause -->
+          <div class="konfigurator-mode-selection" id="modeSelection">
+            <h3 class="konfigurator-mode-title">
+              Wie möchtest du dein Lebkuchenhaus erleben?
+            </h3>
+            <div class="konfigurator-mode-cards">
+              <div class="konfigurator-mode-card" data-mode="onsite">
+                <div class="konfigurator-mode-icon">🏠</div>
+                <h4 class="konfigurator-mode-card-title">Vor Ort bauen</h4>
+                <p class="konfigurator-mode-card-desc">
+                  Besuche uns am Stand und baue dein Häuschen direkt vor Ort
+                </p>
+                <button
+                  class="btn btn-primary konfigurator-mode-btn"
+                  data-mode="onsite"
+                >
+                  Termin reservieren
+                </button>
+              </div>
+              <div class="konfigurator-mode-card" data-mode="delivery">
+                <div class="konfigurator-mode-icon">📦</div>
+                <h4 class="konfigurator-mode-card-title">
+                  Nach Hause bestellen
+                </h4>
+                <p class="konfigurator-mode-card-desc">
+                  Konfiguriere dein Häuschen und lass es dir liefern
+                </p>
+                <button
+                  class="btn btn-primary konfigurator-mode-btn"
+                  data-mode="delivery"
+                >
+                  Jetzt konfigurieren
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Onsite Reservation Flow -->
+          <div
+            class="konfigurator-wrapper konfigurator-onsite"
+            id="onsiteFlow"
+            style="display: none"
+          >
+            <button class="konfigurator-back-btn" id="backFromOnsite">
+              ← Zurück zur Auswahl
+            </button>
+            <div class="konfigurator-reservation">
+              <h3 class="konfigurator-reservation-title">
+                Termin für Vor-Ort-Erlebnis reservieren
+              </h3>
+              <p class="konfigurator-reservation-desc">
+                Buche jetzt deinen Termin bei uns am Stand in der Markthalle
+                Luzern. Vor Ort kannst du dann dein Lebkuchenhaus nach deinen
+                Wünschen gestalten.
+              </p>
+
+              <form class="konfigurator-reservation-form" id="reservationForm">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="res-name" class="form-label">Name *</label>
+                    <input
+                      type="text"
+                      id="res-name"
+                      class="form-input"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="res-email" class="form-label">E-Mail *</label>
+                    <input
+                      type="email"
+                      id="res-email"
+                      class="form-input"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="res-date" class="form-label"
+                      >Wunschdatum *</label
+                    >
+                    <input
+                      type="date"
+                      id="res-date"
+                      class="form-input"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="res-time" class="form-label"
+                      >Wunschzeit *</label
+                    >
+                    <select id="res-time" class="form-input" required>
+                      <option value="">Bitte wählen</option>
+                      <option value="10:00">10:00 - 11:00 Uhr</option>
+                      <option value="11:00">11:00 - 12:00 Uhr</option>
+                      <option value="13:00">13:00 - 14:00 Uhr</option>
+                      <option value="14:00">14:00 - 15:00 Uhr</option>
+                      <option value="15:00">15:00 - 16:00 Uhr</option>
+                      <option value="16:00">16:00 - 17:00 Uhr</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="res-persons" class="form-label"
+                    >Anzahl Personen *</label
+                  >
+                  <input
+                    type="number"
+                    id="res-persons"
+                    class="form-input"
+                    min="1"
+                    max="6"
+                    value="1"
+                    required
+                  />
+                  <small class="form-hint"
+                    >Maximal 6 Personen pro Reservation</small
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="res-notes" class="form-label"
+                    >Bemerkungen (optional)</label
+                  >
+                  <textarea
+                    id="res-notes"
+                    class="form-input"
+                    rows="3"
+                    placeholder="Besondere Wünsche oder Anmerkungen"
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                  Termin reservieren
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Delivery/Online Order Flow -->
+          <div
+            class="konfigurator-wrapper konfigurator-delivery"
+            id="deliveryFlow"
+            style="display: none"
+          >
+            <button class="konfigurator-back-btn" id="backFromDelivery">
+              ← Zurück zur Auswahl
+            </button>
+
+            <!-- Step-by-Step Configuration -->
+            <div class="konfigurator-steps-container">
+              <!-- Progress Indicator -->
+              <div class="konfigurator-progress">
+                <div class="konfigurator-progress-step active" data-step="1">
+                  <div class="progress-step-number">1</div>
+                  <div class="progress-step-label">Größe</div>
+                </div>
+                <div class="konfigurator-progress-line"></div>
+                <div class="konfigurator-progress-step" data-step="2">
+                  <div class="progress-step-number">2</div>
+                  <div class="progress-step-label">Aufbau</div>
+                </div>
+                <div class="konfigurator-progress-line"></div>
+                <div class="konfigurator-progress-step" data-step="3">
+                  <div class="progress-step-number">3</div>
+                  <div class="progress-step-label">Style</div>
+                </div>
+                <div class="konfigurator-progress-line"></div>
+                <div class="konfigurator-progress-step" data-step="4">
+                  <div class="progress-step-number">4</div>
+                  <div class="progress-step-label">Extras</div>
+                </div>
+                <div class="konfigurator-progress-line"></div>
+                <div class="konfigurator-progress-step" data-step="5">
+                  <div class="progress-step-number">5</div>
+                  <div class="progress-step-label">Text</div>
+                </div>
+              </div>
+
+              <!-- Current Price Display (always visible) -->
+              <div class="konfigurator-current-price">
+                <span class="current-price-label">Aktueller Preis:</span>
+                <span class="current-price-value" id="currentPriceDisplay"
+                  >CHF 25.-</span
+                >
+              </div>
+
+              <!-- Step Content Area -->
+              <div class="konfigurator-step-content">
+                <!-- Step 1: Größe -->
+                <div class="konfigurator-step active" data-step="1">
+                  <h3 class="konfigurator-step-title">
+                    Wähle die Größe deines Lebkuchenhauses
+                  </h3>
+                  <div class="konfigurator-option-choices">
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="size-small"
+                        name="size"
+                        value="small"
+                        data-price="25"
+                        checked
+                      />
+                      <label for="size-small" class="konfigurator-option-label">
+                        <span class="option-name">Klein</span>
+                        <span class="option-price">CHF 25.-</span>
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="size-medium"
+                        name="size"
+                        value="medium"
+                        data-price="40"
+                      />
+                      <label
+                        for="size-medium"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Mittel</span>
+                        <span class="option-price">CHF 40.-</span>
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="size-large"
+                        name="size"
+                        value="large"
+                        data-price="60"
+                      />
+                      <label for="size-large" class="konfigurator-option-label">
+                        <span class="option-name">Groß</span>
+                        <span class="option-price">CHF 60.-</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="konfigurator-step-actions">
+                    <button class="btn btn-primary" id="nextStep1">
+                      Weiter
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2: Aufbau -->
+                <div class="konfigurator-step" data-step="2">
+                  <h3 class="konfigurator-step-title">
+                    Wie möchtest du dein Häuschen erhalten?
+                  </h3>
+                  <div class="konfigurator-option-choices">
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="assembly-diy"
+                        name="assembly"
+                        value="diy"
+                        checked
+                      />
+                      <label
+                        for="assembly-diy"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name"
+                          >DIY-Box (Selbst aufbauen)</span
+                        >
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="assembly-prebuilt"
+                        name="assembly"
+                        value="prebuilt"
+                        data-price="15"
+                      />
+                      <label
+                        for="assembly-prebuilt"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Fertig aufgebaut</span>
+                        <span class="option-price">+ CHF 15.-</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="konfigurator-step-actions">
+                    <button class="btn btn-secondary" id="prevStep2">
+                      Zurück
+                    </button>
+                    <button class="btn btn-primary" id="nextStep2">
+                      Weiter
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Deko-Style -->
+                <div class="konfigurator-step" data-step="3">
+                  <h3 class="konfigurator-step-title">
+                    Wähle deinen Deko-Style
+                  </h3>
+                  <div class="konfigurator-option-choices">
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="style-classic"
+                        name="style"
+                        value="classic"
+                        checked
+                      />
+                      <label
+                        for="style-classic"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Klassisch</span>
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="style-modern"
+                        name="style"
+                        value="modern"
+                      />
+                      <label
+                        for="style-modern"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Modern</span>
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="radio"
+                        id="style-winter"
+                        name="style"
+                        value="winter"
+                        data-price="5"
+                      />
+                      <label
+                        for="style-winter"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Schneehüsli ❄️</span>
+                        <span class="option-price"
+                          >+ CHF 5.- (Limited Edition)</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                  <div class="konfigurator-step-actions">
+                    <button class="btn btn-secondary" id="prevStep3">
+                      Zurück
+                    </button>
+                    <button class="btn btn-primary" id="nextStep3">
+                      Weiter
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 4: Extras -->
+                <div class="konfigurator-step" data-step="4">
+                  <h3 class="konfigurator-step-title">
+                    Füge Extras hinzu (optional)
+                  </h3>
+                  <div class="konfigurator-option-choices">
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="checkbox"
+                        id="topping-snow"
+                        name="toppings"
+                        value="snow"
+                        data-price="5"
+                      />
+                      <label
+                        for="topping-snow"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Schnee</span>
+                        <span class="option-price">+ CHF 5.-</span>
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="checkbox"
+                        id="topping-lights"
+                        name="toppings"
+                        value="lights"
+                        data-price="8"
+                      />
+                      <label
+                        for="topping-lights"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">LED-Lichter</span>
+                        <span class="option-price">+ CHF 8.-</span>
+                      </label>
+                    </div>
+                    <div class="konfigurator-option-choice">
+                      <input
+                        type="checkbox"
+                        id="topping-figures"
+                        name="toppings"
+                        value="figures"
+                        data-price="6"
+                      />
+                      <label
+                        for="topping-figures"
+                        class="konfigurator-option-label"
+                      >
+                        <span class="option-name">Figuren</span>
+                        <span class="option-price">+ CHF 6.-</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="konfigurator-step-actions">
+                    <button class="btn btn-secondary" id="prevStep4">
+                      Zurück
+                    </button>
+                    <button class="btn btn-primary" id="nextStep4">
+                      Weiter
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 5: Personalisierung -->
+                <div class="konfigurator-step" data-step="5">
+                  <h3 class="konfigurator-step-title">
+                    Personalisiere dein Häuschen (optional)
+                  </h3>
+                  <div class="form-group">
+                    <label for="customText" class="form-label"
+                      >Deine Nachricht auf dem Täfelchen (+ CHF 3.-)</label
+                    >
+                    <input
+                      type="text"
+                      id="customText"
+                      class="form-input"
+                      placeholder="z.B. Frohe Weihnachten, Familie Müller"
+                      maxlength="30"
+                    />
+                    <small class="form-hint"
+                      >Wird liebevoll von Hand auf dein Lebkuchenhaus-Täfelchen
+                      geschrieben</small
+                    >
+                  </div>
+                  <div class="konfigurator-step-actions">
+                    <button class="btn btn-secondary" id="prevStep5">
+                      Zurück
+                    </button>
+                    <button class="btn btn-primary" id="finishConfig">
+                      Jetzt bestellen
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preview Rechts (Always Visible) -->
+            <div class="konfigurator-preview">
+              <h3 class="konfigurator-preview-title">Dein Häuschen</h3>
+              <div class="konfigurator-preview-canvas" id="previewCanvas">
+                <!-- Base House -->
+                <img
+                  src="assets/img/house-base.png"
+                  alt="Lebkuchenhaus Basis"
+                  class="konfigurator-preview-layer"
+                  id="layerBase"
+                  onerror="this.style.display='none'"
+                />
+                <!-- TODO: Add overlay images based on configuration -->
+                <div
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 4rem;
+                    color: var(--c-accent);
+                  "
+                >
+                  🏠
+                </div>
+              </div>
+
+              <!-- Summary only in preview (no order button here) -->
+              <div class="konfigurator-price-summary">
+                <div class="price-row">
+                  <span>Grundpreis:</span>
+                  <span id="priceBase">CHF 25.-</span>
+                </div>
+                <div
+                  class="price-row"
+                  id="priceExtrasRow"
+                  style="display: none"
+                >
+                  <span>Extras:</span>
+                  <span id="priceExtras">CHF 0.-</span>
+                </div>
+                <div class="price-row price-total">
+                  <span>Gesamtpreis:</span>
+                  <span id="priceTotal">CHF 25.-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STANDORT SECTION -->
+      <section class="standort reveal" id="standort">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-subtitle">Besuche uns</p>
+            <h2 class="section-title">Unser Standort</h2>
+            <p class="section-description">
+              Finde uns in der Markthalle Luzern während der Weihnachtszeit.
+            </p>
+          </div>
+
+          <div class="standort-content">
+            <!-- Info Links -->
+            <div class="standort-info">
+              <div class="standort-info-item">
+                <span class="standort-info-label">Adresse</span>
+                <p class="standort-info-value">
+                  Markthalle Luzern<br />
+                  Baselstrasse 32<br />
+                  6003 Luzern
+                </p>
+              </div>
+
+              <div class="standort-info-item">
+                <span class="standort-info-label">Öffnungszeiten</span>
+                <p class="standort-info-value">
+                  Mo - Fr: 10:00 - 19:00 Uhr<br />
+                  Sa: 09:00 - 17:00 Uhr<br />
+                  So: 11:00 - 16:00 Uhr
+                </p>
+              </div>
+
+              <div class="standort-info-item">
+                <span class="standort-info-label">Anreise</span>
+                <p class="standort-info-value">
+                  Mit dem ÖV: Bus 1, 2, 14 bis Haltestelle "Schönbühl"<br />
+                  Parkplätze: Begrenzt verfügbar in der Umgebung
+                </p>
+              </div>
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Markthalle+Luzern"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary mt-md"
+              >
+                In Google Maps öffnen
+              </a>
+            </div>
+
+            <!-- Map Rechts -->
+            <div class="standort-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.234567890123!2d8.3014!3d47.0502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDAzJzAwLjciTiA4wrAxOCcwNS4wIkU!5e0!3m2!1sde!2sch!4v1234567890123!5m2!1sde!2sch"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Karte Standort Markthalle Luzern"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMUNITY SECTION -->
+      <section class="community reveal" id="community">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-subtitle">Community</p>
+            <h2 class="section-title">Teile deine Kreationen</h2>
+            <p class="section-description">
+              Zeig uns dein Knusperhäuschen auf Social Media und werde Teil
+              unserer Community!
+            </p>
+          </div>
+
+          <!-- Social Ticker -->
+          <div class="community-ticker-wrapper">
+            <div class="community-ticker">
+              <!-- First set of items -->
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@fäbse</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/facebook-logo.svg"
+                  alt="Facebook"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@leopanthr</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@ovi</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/facebook-logo.svg"
+                  alt="Facebook"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@aliwasi</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@grrbrr</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Facebook"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_post1.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@ikkimel42</div>
+              </div>
+              <!-- Duplicate set for seamless loop -->
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@fäbse</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/facebook-logo.svg"
+                  alt="Facebook"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@leopanthr</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@ovi</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/facebook-logo.svg"
+                  alt="Facebook"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@aliwasi</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Instagram"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_placeholder.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@grrbrr</div>
+              </div>
+              <div class="community-item">
+                <img
+                  src="assets/social_icons/instagram-logo.svg"
+                  alt="Facebook"
+                  class="social-icon"
+                />
+                <img
+                  src="assets/social_posts/social_post1.jpg"
+                  alt="Social Post"
+                  class="social-image"
+                />
+                <div class="social-username">@ikkimel42</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="community-cta">
+            <p style="margin-bottom: var(--spacing-md); font-size: 1.125rem">
+              Folge uns auf Instagram:
+              <strong style="color: var(--c-accent)"
+                >@knusperhaueschen_luzern</strong
+              >
+            </p>
+            <a href="#gewinnspiel" class="btn btn-primary">Zum Gewinnspiel</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- GEWINNSPIEL SECTION -->
+      <section class="gewinnspiel reveal" id="gewinnspiel">
+        <div class="container">
+          <div class="section-header">
+            <p class="section-subtitle">Mitmachen & Gewinnen</p>
+            <h2 class="section-title">Gewinnspiel</h2>
+            <p class="section-description">
+              Gewinne einen kostenlosen Besuch am Weihnachtsstand für bis zu 4
+              Personen! Beantworte unsere Schätzfrage und mit etwas Glück gehört
+              der Preis dir.
+            </p>
+          </div>
+
+          <form class="gewinnspiel-form" id="gewinnspielForm" novalidate>
+            <div class="form-group">
+              <label for="contest-name" class="form-label">Name *</label>
+              <input
+                type="text"
+                id="contest-name"
+                name="name"
+                class="form-input"
+                required
+              />
+              <span class="form-error" id="error-contest-name"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contest-age" class="form-label">Alter *</label>
+              <input
+                type="number"
+                id="contest-age"
+                name="age"
+                class="form-input"
+                min="1"
+                max="120"
+                required
+              />
+              <span class="form-error" id="error-contest-age"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contest-persons" class="form-label"
+                >Anzahl Personen (max. 4) *</label
+              >
+              <input
+                type="number"
+                id="contest-persons"
+                name="persons"
+                class="form-input"
+                min="1"
+                max="4"
+                required
+              />
+              <span class="form-error" id="error-contest-persons"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contest-email" class="form-label">E-Mail *</label>
+              <input
+                type="email"
+                id="contest-email"
+                name="email"
+                class="form-input"
+                required
+              />
+              <span class="form-error" id="error-contest-email"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contest-phone" class="form-label">Telefon</label>
+              <input
+                type="tel"
+                id="contest-phone"
+                name="phone"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contest-guess" class="form-label"
+                >Schätzfrage: Wie lange dauert die Dekoration eines
+                Lebkuchenhauses durchschnittlich (in Minuten)? *</label
+              >
+              <input
+                type="number"
+                id="contest-guess"
+                name="guess"
+                class="form-input"
+                min="1"
+                required
+              />
+              <span class="form-error" id="error-contest-guess"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input
+                  type="checkbox"
+                  id="contest-terms"
+                  name="terms"
+                  required
+                />
+                <span class="form-checkbox-custom"></span>
+                <span class="form-checkbox-label">
+                  Ich akzeptiere die
+                  <a href="#" style="color: var(--c-accent)"
+                    >Teilnahmebedingungen</a
+                  >
+                  und
+                  <a href="#" style="color: var(--c-accent)"
+                    >Datenschutzerklärung</a
+                  >
+                  *
+                </span>
+              </label>
+              <span class="form-error" id="error-contest-terms"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">
+              Jetzt teilnehmen
+            </button>
+
+            <div class="form-success" id="contestSuccess" style="display: none">
+              <div class="form-success-icon">🎉</div>
+              <h3>Vielen Dank für deine Teilnahme!</h3>
+              <p>
+                Wir haben deine Daten erhalten und melden uns bei dir, wenn du
+                gewonnen hast. Viel Glück!
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer" id="contact">
+        <div class="container">
+          <!-- CTA -->
+          <div class="footer-cta">
+            <h2 class="footer-cta-title">Bereit für märchenhafte Momente?</h2>
+            <a href="#konfigurator" class="btn btn-primary btn-large"
+              >Jetzt Platz reservieren</a
+            >
+          </div>
+
+          <!-- Footer Content -->
+          <div class="footer-content">
+            <div class="footer-column">
+              <h4>Knusperhäuschen</h4>
+              <p>
+                Handgemachte Lebkuchenhäuser<br />
+                mit Liebe aus Luzern
               </p>
             </div>
 
-            <div class="story-founder">
-              <div class="story-founder-photo" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem;" aria-label="Olivia Foto">
-                👩‍🍳
+            <div class="footer-column">
+              <h4>Kontakt</h4>
+              <ul class="footer-links">
+                <li>
+                  📧
+                  <a href="mailto:info@knusperhaueschen.ch"
+                    >info@knusperhaueschen.ch</a
+                  >
+                </li>
+                <li>📞 <a href="tel:+41411234567">+41 41 123 45 67</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>Links</h4>
+              <ul class="footer-links">
+                <li><a href="#story">Über uns</a></li>
+                <li><a href="#angebot">Angebot</a></li>
+                <li><a href="#">Impressum</a></li>
+                <li><a href="#">Datenschutz</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>Folge uns</h4>
+              <div class="footer-social">
+                <a
+                  href="#"
+                  class="footer-social-link"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span aria-hidden="true">📷</span>
+                </a>
+                <a
+                  href="#"
+                  class="footer-social-link"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span aria-hidden="true">👍</span>
+                </a>
+                <a
+                  href="#"
+                  class="footer-social-link"
+                  aria-label="TikTok"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span aria-hidden="true">🎵</span>
+                </a>
               </div>
-              <h3 class="story-founder-name">Olivia</h3>
-              <p class="story-founder-role">Konditormeisterin & Mitgründerin</p>
-              <p class="story-founder-text">
-                "Mit regionalem Birnel und Freilandeiern schaffen wir Genussmomente, die nachhaltig begeistern."
-              </p>
             </div>
           </div>
 
-          <!-- Wände: USPs in Fenster-Form -->
-          <div class="story-windows">
-            <div class="story-window">
-              <div class="story-window-icon">🌾</div>
-              <h4>Regional & Nachhaltig</h4>
-              <p>Lokales Birnel und Freilandeier aus der Zentralschweiz</p>
-            </div>
-
-            <div class="story-window">
-              <div class="story-window-icon">✋</div>
-              <h4>Handgemacht</h4>
-              <p>Jedes Häuschen mit Liebe zum Detail gefertigt</p>
-            </div>
-
-            <div class="story-window">
-              <div class="story-window-icon">🎨</div>
-              <h4>Spielerisch kreativ</h4>
-              <p>Backhandwerk zum Anfassen und Erleben</p>
-            </div>
-
-            <div class="story-window">
-              <div class="story-window-icon">❤️</div>
-              <h4>Familienfreundlich</h4>
-              <p>Genussmomente für Groß und Klein</p>
-            </div>
-          </div>
-
-          <!-- Fundament: Blauring Support -->
-          <div class="story-foundation">
-            <div class="story-support-badge">
-              <span class="story-support-icon">🤝</span>
-              <div class="story-support-text">
-                <strong>Unterstützt vom Blauring Luzern</strong>
-                <p>Gemeinsam schaffen wir unvergessliche Erlebnisse am Marktstand</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- KONFIGURATOR SECTION -->
-    <section class="konfigurator reveal" id="konfigurator">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-subtitle">Dein Häuschen</p>
-          <h2 class="section-title">Interaktiver Konfigurator</h2>
-          <p class="section-description">
-            Gestalte dein individuelles Lebkuchenhaus - entweder vor Ort bei uns oder bequem nach Hause bestellen.
-          </p>
-        </div>
-
-        <!-- Initial Choice: Vor Ort oder Nach Hause -->
-        <div class="konfigurator-mode-selection" id="modeSelection">
-          <h3 class="konfigurator-mode-title">Wie möchtest du dein Lebkuchenhaus erleben?</h3>
-          <div class="konfigurator-mode-cards">
-            <div class="konfigurator-mode-card" data-mode="onsite">
-              <div class="konfigurator-mode-icon">🏠</div>
-              <h4 class="konfigurator-mode-card-title">Vor Ort bauen</h4>
-              <p class="konfigurator-mode-card-desc">Besuche uns am Stand und baue dein Häuschen direkt vor Ort</p>
-              <button class="btn btn-primary konfigurator-mode-btn" data-mode="onsite">Termin reservieren</button>
-            </div>
-            <div class="konfigurator-mode-card" data-mode="delivery">
-              <div class="konfigurator-mode-icon">📦</div>
-              <h4 class="konfigurator-mode-card-title">Nach Hause bestellen</h4>
-              <p class="konfigurator-mode-card-desc">Konfiguriere dein Häuschen und lass es dir liefern</p>
-              <button class="btn btn-primary konfigurator-mode-btn" data-mode="delivery">Jetzt konfigurieren</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Onsite Reservation Flow -->
-        <div class="konfigurator-wrapper konfigurator-onsite" id="onsiteFlow" style="display: none;">
-          <div class="konfigurator-reservation">
-            <button class="konfigurator-back-btn" id="backFromOnsite">← Zurück zur Auswahl</button>
-            <h3 class="konfigurator-reservation-title">Termin für Vor-Ort-Erlebnis reservieren</h3>
-            <p class="konfigurator-reservation-desc">
-              Buche jetzt deinen Termin bei uns am Stand in der Markthalle Luzern. Vor Ort kannst du dann dein Lebkuchenhaus nach deinen Wünschen gestalten.
+          <div class="footer-bottom">
+            <p>
+              &copy; 2024 Knusperhäuschen Luzern. Mit Herz gemacht von Anna,
+              Thomas, Sophie & Lukas.
             </p>
+          </div>
+        </div>
+      </footer>
+    </main>
 
-            <form class="konfigurator-reservation-form" id="reservationForm">
-              <div class="form-row">
+    <!-- Order Modal -->
+    <!-- Professional Checkout Modal -->
+    <div class="checkout-modal" id="orderModal">
+      <div class="checkout-overlay" id="checkoutOverlay"></div>
+      <div class="checkout-container">
+        <button
+          class="checkout-close"
+          id="closeOrderModal"
+          aria-label="Checkout schließen"
+        >
+          &times;
+        </button>
+
+        <div class="checkout-grid">
+          <!-- Left: Customer Info -->
+          <div class="checkout-main">
+            <div class="checkout-header">
+              <h2 class="checkout-title">Checkout</h2>
+              <p class="checkout-subtitle">Vervollständige deine Bestellung</p>
+            </div>
+
+            <form id="orderForm" class="checkout-form" novalidate>
+              <!-- Contact Section -->
+              <div class="checkout-section">
+                <h3 class="checkout-section-title">Kontaktinformationen</h3>
                 <div class="form-group">
-                  <label for="res-name" class="form-label">Name *</label>
-                  <input type="text" id="res-name" class="form-input" required>
-                </div>
-                <div class="form-group">
-                  <label for="res-email" class="form-label">E-Mail *</label>
-                  <input type="email" id="res-email" class="form-input" required>
+                  <label for="order-email" class="form-label">E-Mail *</label>
+                  <input
+                    type="email"
+                    id="order-email"
+                    name="email"
+                    class="form-input"
+                    required
+                    placeholder="deine@email.ch"
+                  />
+                  <span class="form-error" id="error-order-email"></span>
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="res-date" class="form-label">Wunschdatum *</label>
-                  <input type="date" id="res-date" class="form-input" required>
+              <!-- Delivery Section -->
+              <div class="checkout-section">
+                <h3 class="checkout-section-title">Lieferinformationen</h3>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="order-firstname" class="form-label"
+                      >Vorname *</label
+                    >
+                    <input
+                      type="text"
+                      id="order-firstname"
+                      name="firstname"
+                      class="form-input"
+                      required
+                    />
+                    <span class="form-error" id="error-order-firstname"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="order-lastname" class="form-label"
+                      >Nachname *</label
+                    >
+                    <input
+                      type="text"
+                      id="order-lastname"
+                      name="lastname"
+                      class="form-input"
+                      required
+                    />
+                    <span class="form-error" id="error-order-lastname"></span>
+                  </div>
                 </div>
+
                 <div class="form-group">
-                  <label for="res-time" class="form-label">Wunschzeit *</label>
-                  <select id="res-time" class="form-input" required>
-                    <option value="">Bitte wählen</option>
-                    <option value="10:00">10:00 - 11:00 Uhr</option>
-                    <option value="11:00">11:00 - 12:00 Uhr</option>
-                    <option value="13:00">13:00 - 14:00 Uhr</option>
-                    <option value="14:00">14:00 - 15:00 Uhr</option>
-                    <option value="15:00">15:00 - 16:00 Uhr</option>
-                    <option value="16:00">16:00 - 17:00 Uhr</option>
-                  </select>
+                  <label for="order-address" class="form-label"
+                    >Adresse *</label
+                  >
+                  <input
+                    type="text"
+                    id="order-address"
+                    name="address"
+                    class="form-input"
+                    required
+                    placeholder="Strasse und Hausnummer"
+                  />
+                  <span class="form-error" id="error-order-address"></span>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group" style="flex: 1">
+                    <label for="order-zip" class="form-label">PLZ *</label>
+                    <input
+                      type="text"
+                      id="order-zip"
+                      name="zip"
+                      class="form-input"
+                      required
+                    />
+                    <span class="form-error" id="error-order-zip"></span>
+                  </div>
+                  <div class="form-group" style="flex: 2">
+                    <label for="order-city" class="form-label">Ort *</label>
+                    <input
+                      type="text"
+                      id="order-city"
+                      name="city"
+                      class="form-input"
+                      required
+                    />
+                    <span class="form-error" id="error-order-city"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="order-phone" class="form-label"
+                    >Telefon (optional)</label
+                  >
+                  <input
+                    type="tel"
+                    id="order-phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="+41 79 123 45 67"
+                  />
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="res-persons" class="form-label">Anzahl Personen *</label>
-                <input type="number" id="res-persons" class="form-input" min="1" max="6" value="1" required>
-                <small class="form-hint">Maximal 6 Personen pro Reservation</small>
+              <!-- Payment Section -->
+              <div class="checkout-section">
+                <h3 class="checkout-section-title">Zahlungsmethode</h3>
+                <div class="checkout-payment-options">
+                  <label class="payment-option">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="invoice"
+                      checked
+                    />
+                    <span class="payment-option-content">
+                      <span class="payment-option-icon">📧</span>
+                      <span class="payment-option-text">
+                        <strong>Rechnung</strong>
+                        <small>Zahlung nach Erhalt</small>
+                      </span>
+                    </span>
+                  </label>
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="twint" />
+                    <span class="payment-option-content">
+                      <span class="payment-option-icon">📱</span>
+                      <span class="payment-option-text">
+                        <strong>TWINT</strong>
+                        <small>Sofortige Zahlung</small>
+                      </span>
+                    </span>
+                  </label>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label for="res-notes" class="form-label">Bemerkungen (optional)</label>
-                <textarea id="res-notes" class="form-input" rows="3" placeholder="Besondere Wünsche oder Anmerkungen"></textarea>
+              <!-- Notes -->
+              <div class="checkout-section">
+                <h3 class="checkout-section-title">
+                  Zusätzliche Anmerkungen (optional)
+                </h3>
+                <div class="form-group">
+                  <textarea
+                    id="order-message"
+                    name="message"
+                    class="form-input"
+                    rows="3"
+                    placeholder="Besondere Wünsche oder Hinweise zur Lieferung..."
+                  ></textarea>
+                </div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block">Termin reservieren</button>
+              <button type="submit" class="btn btn-primary btn-block btn-large">
+                Bestellung abschliessen
+              </button>
+
+              <div class="form-success" id="orderSuccess" style="display: none">
+                <div class="form-success-icon">🎉</div>
+                <h3>Bestellung erfolgreich!</h3>
+                <p>
+                  Vielen Dank für deine Bestellung. Wir haben eine Bestätigung
+                  an deine E-Mail gesendet.
+                </p>
+              </div>
             </form>
           </div>
-        </div>
 
-        <!-- Delivery/Online Order Flow -->
-        <div class="konfigurator-wrapper konfigurator-delivery" id="deliveryFlow" style="display: none;">
-          <button class="konfigurator-back-btn" id="backFromDelivery">← Zurück zur Auswahl</button>
+          <!-- Right: Order Summary -->
+          <div class="checkout-sidebar">
+            <div class="checkout-summary">
+              <h3 class="checkout-summary-title">Bestellübersicht</h3>
 
-          <!-- Optionen Links -->
-          <div class="konfigurator-options">
-            <!-- Größe -->
-            <div class="konfigurator-option-group">
-              <h3 class="konfigurator-option-title">Größe</h3>
-              <div class="konfigurator-option-choices">
-                <div class="konfigurator-option-choice">
-                  <input type="radio" id="size-small" name="size" value="small" data-price="25" checked>
-                  <label for="size-small" class="konfigurator-option-label">
-                    <span class="option-name">Klein</span>
-                    <span class="option-price">CHF 25.-</span>
-                  </label>
+              <div class="checkout-product" id="orderSummary">
+                <!-- Dynamic content will be inserted here -->
+              </div>
+
+              <div class="checkout-totals">
+                <div class="checkout-total-row">
+                  <span>Zwischensumme</span>
+                  <span id="checkoutSubtotal">CHF 0.-</span>
                 </div>
-                <div class="konfigurator-option-choice">
-                  <input type="radio" id="size-medium" name="size" value="medium" data-price="40">
-                  <label for="size-medium" class="konfigurator-option-label">
-                    <span class="option-name">Mittel</span>
-                    <span class="option-price">CHF 40.-</span>
-                  </label>
+                <div class="checkout-total-row">
+                  <span>Versand</span>
+                  <span id="checkoutShipping">CHF 8.50</span>
                 </div>
-                <div class="konfigurator-option-choice">
-                  <input type="radio" id="size-large" name="size" value="large" data-price="60">
-                  <label for="size-large" class="konfigurator-option-label">
-                    <span class="option-name">Groß</span>
-                    <span class="option-price">CHF 60.-</span>
-                  </label>
+                <div class="checkout-total-row checkout-total-final">
+                  <span>Total</span>
+                  <span id="checkoutTotal">CHF 0.-</span>
+                </div>
+              </div>
+
+              <div class="checkout-guarantee">
+                <div class="checkout-guarantee-icon">✓</div>
+                <div class="checkout-guarantee-text">
+                  <strong>Sichere Zahlung</strong>
+                  <p>Deine Daten werden verschlüsselt übertragen</p>
                 </div>
               </div>
             </div>
-
-            <!-- Deko-Style -->
-            <div class="konfigurator-option-group">
-              <h3 class="konfigurator-option-title">Deko-Style</h3>
-              <div class="konfigurator-option-choices">
-                <div class="konfigurator-option-choice">
-                  <input type="radio" id="style-classic" name="style" value="classic" checked>
-                  <label for="style-classic" class="konfigurator-option-label">
-                    <span class="option-name">Klassisch</span>
-                  </label>
-                </div>
-                <div class="konfigurator-option-choice">
-                  <input type="radio" id="style-modern" name="style" value="modern">
-                  <label for="style-modern" class="konfigurator-option-label">
-                    <span class="option-name">Modern</span>
-                  </label>
-                </div>
-                <div class="konfigurator-option-choice">
-                  <input type="radio" id="style-winter" name="style" value="winter" data-price="5">
-                  <label for="style-winter" class="konfigurator-option-label">
-                    <span class="option-name">Schneehüsli ❄️</span>
-                    <span class="option-price">+ CHF 5.- (Limited Edition)</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <!-- Toppings -->
-            <div class="konfigurator-option-group">
-              <h3 class="konfigurator-option-title">Extras</h3>
-              <div class="konfigurator-option-choices">
-                <div class="konfigurator-option-choice">
-                  <input type="checkbox" id="topping-snow" name="toppings" value="snow" data-price="5">
-                  <label for="topping-snow" class="konfigurator-option-label">
-                    <span class="option-name">Schnee</span>
-                    <span class="option-price">+ CHF 5.-</span>
-                  </label>
-                </div>
-                <div class="konfigurator-option-choice">
-                  <input type="checkbox" id="topping-lights" name="toppings" value="lights" data-price="8">
-                  <label for="topping-lights" class="konfigurator-option-label">
-                    <span class="option-name">LED-Lichter</span>
-                    <span class="option-price">+ CHF 8.-</span>
-                  </label>
-                </div>
-                <div class="konfigurator-option-choice">
-                  <input type="checkbox" id="topping-figures" name="toppings" value="figures" data-price="6">
-                  <label for="topping-figures" class="konfigurator-option-label">
-                    <span class="option-name">Figuren</span>
-                    <span class="option-price">+ CHF 6.-</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <!-- Personalisierung -->
-            <div class="konfigurator-option-group">
-              <h3 class="konfigurator-option-title">Personalisierte Häuschen-Täfelchen</h3>
-              <div class="form-group">
-                <label for="customText" class="form-label">Deine Nachricht auf dem Täfelchen (optional, + CHF 3.-)</label>
-                <input type="text" id="customText" class="form-input" placeholder="z.B. Frohe Weihnachten, Familie Müller" maxlength="30">
-                <small class="form-hint">Wird liebevoll von Hand auf dein Lebkuchenhaus-Täfelchen geschrieben</small>
-              </div>
-            </div>
-          </div>
-
-          <!-- Preview Rechts -->
-          <div class="konfigurator-preview">
-            <h3 class="konfigurator-preview-title">Dein Häuschen</h3>
-            <div class="konfigurator-preview-canvas" id="previewCanvas">
-              <!-- Base House -->
-              <img src="assets/img/house-base.png" alt="Lebkuchenhaus Basis" class="konfigurator-preview-layer" id="layerBase" onerror="this.style.display='none'">
-              <!-- TODO: Add overlay images based on configuration -->
-              <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--c-accent);">
-                🏠
-              </div>
-            </div>
-
-            <!-- Price Summary -->
-            <div class="konfigurator-price-summary">
-              <div class="price-row">
-                <span>Grundpreis:</span>
-                <span id="priceBase">CHF 25.-</span>
-              </div>
-              <div class="price-row" id="priceExtrasRow" style="display: none;">
-                <span>Extras:</span>
-                <span id="priceExtras">CHF 0.-</span>
-              </div>
-              <div class="price-row price-total">
-                <span>Gesamtpreis:</span>
-                <span id="priceTotal">CHF 25.-</span>
-              </div>
-            </div>
-
-            <div class="konfigurator-cta">
-              <button class="btn btn-primary" id="openOrderForm">Jetzt bestellen</button>
-            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- STANDORT SECTION -->
-    <section class="standort reveal" id="standort">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-subtitle">Besuche uns</p>
-          <h2 class="section-title">Unser Standort</h2>
-          <p class="section-description">
-            Finde uns in der Markthalle Luzern während der Weihnachtszeit.
-          </p>
-        </div>
-
-        <div class="standort-content">
-          <!-- Info Links -->
-          <div class="standort-info">
-            <div class="standort-info-item">
-              <span class="standort-info-label">Adresse</span>
-              <p class="standort-info-value">
-                Markthalle Luzern<br>
-                Baselstrasse 32<br>
-                6003 Luzern
-              </p>
-            </div>
-
-            <div class="standort-info-item">
-              <span class="standort-info-label">Öffnungszeiten</span>
-              <p class="standort-info-value">
-                Mo - Fr: 10:00 - 19:00 Uhr<br>
-                Sa: 09:00 - 17:00 Uhr<br>
-                So: 11:00 - 16:00 Uhr
-              </p>
-            </div>
-
-            <div class="standort-info-item">
-              <span class="standort-info-label">Anreise</span>
-              <p class="standort-info-value">
-                Mit dem ÖV: Bus 1, 2, 14 bis Haltestelle "Schönbühl"<br>
-                Parkplätze: Begrenzt verfügbar in der Umgebung
-              </p>
-            </div>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=Markthalle+Luzern" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-md">
-              In Google Maps öffnen
-            </a>
-          </div>
-
-          <!-- Map Rechts -->
-          <div class="standort-map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.234567890123!2d8.3014!3d47.0502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDAzJzAwLjciTiA4wrAxOCcwNS4wIkU!5e0!3m2!1sde!2sch!4v1234567890123!5m2!1sde!2sch"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Karte Standort Markthalle Luzern">
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMMUNITY SECTION -->
-    <section class="community reveal" id="community">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-subtitle">Community</p>
-          <h2 class="section-title">Teile deine Kreationen</h2>
-          <p class="section-description">
-            Zeig uns dein Knusperhäuschen auf Social Media und werde Teil unserer Community!
-          </p>
-        </div>
-
-        <!-- Social Ticker -->
-        <div class="community-ticker-wrapper">
-          <div class="community-ticker">
-            <!-- First set of items -->
-            <div class="community-item" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              📸
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              🎄
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              ⭐
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              🏠
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              🎅
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              ❄️
-            </div>
-            <!-- Duplicate set for seamless loop -->
-            <div class="community-item" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              📸
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              🎄
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              ⭐
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              🏠
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #EED070 0%, #C5A347 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              🎅
-            </div>
-            <div class="community-item" style="background: linear-gradient(135deg, #C5A347 0%, #EED070 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-              ❄️
-            </div>
-          </div>
-        </div>
-
-        <div class="community-cta">
-          <p style="margin-bottom: var(--spacing-md); font-size: 1.125rem;">
-            Folge uns auf Instagram: <strong style="color: var(--c-accent);">@knusperhaueschen_luzern</strong>
-          </p>
-          <a href="#gewinnspiel" class="btn btn-primary">Zum Gewinnspiel</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- GEWINNSPIEL SECTION -->
-    <section class="gewinnspiel reveal" id="gewinnspiel">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-subtitle">Mitmachen & Gewinnen</p>
-          <h2 class="section-title">Gewinnspiel</h2>
-          <p class="section-description">
-            Gewinne einen kostenlosen Besuch am Weihnachtsstand für bis zu 4 Personen! Beantworte unsere Schätzfrage und mit etwas Glück gehört der Preis dir.
-          </p>
-        </div>
-
-        <form class="gewinnspiel-form" id="gewinnspielForm" novalidate>
-          <div class="form-group">
-            <label for="contest-name" class="form-label">Name *</label>
-            <input type="text" id="contest-name" name="name" class="form-input" required>
-            <span class="form-error" id="error-contest-name"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="contest-age" class="form-label">Alter *</label>
-            <input type="number" id="contest-age" name="age" class="form-input" min="1" max="120" required>
-            <span class="form-error" id="error-contest-age"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="contest-persons" class="form-label">Anzahl Personen (max. 4) *</label>
-            <input type="number" id="contest-persons" name="persons" class="form-input" min="1" max="4" required>
-            <span class="form-error" id="error-contest-persons"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="contest-email" class="form-label">E-Mail *</label>
-            <input type="email" id="contest-email" name="email" class="form-input" required>
-            <span class="form-error" id="error-contest-email"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="contest-phone" class="form-label">Telefon</label>
-            <input type="tel" id="contest-phone" name="phone" class="form-input">
-          </div>
-
-          <div class="form-group">
-            <label for="contest-guess" class="form-label">Schätzfrage: Wie lange dauert die Dekoration eines Lebkuchenhauses durchschnittlich (in Minuten)? *</label>
-            <input type="number" id="contest-guess" name="guess" class="form-input" min="1" required>
-            <span class="form-error" id="error-contest-guess"></span>
-          </div>
-
-          <div class="form-group">
-            <label class="form-checkbox">
-              <input type="checkbox" id="contest-terms" name="terms" required>
-              <span class="form-checkbox-custom"></span>
-              <span class="form-checkbox-label">
-                Ich akzeptiere die <a href="#" style="color: var(--c-accent);">Teilnahmebedingungen</a> und <a href="#" style="color: var(--c-accent);">Datenschutzerklärung</a> *
-              </span>
-            </label>
-            <span class="form-error" id="error-contest-terms"></span>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-large">Jetzt teilnehmen</button>
-
-          <div class="form-success" id="contestSuccess" style="display: none;">
-            <div class="form-success-icon">🎉</div>
-            <h3>Vielen Dank für deine Teilnahme!</h3>
-            <p>Wir haben deine Daten erhalten und melden uns bei dir, wenn du gewonnen hast. Viel Glück!</p>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer" id="contact">
-      <div class="container">
-        <!-- CTA -->
-        <div class="footer-cta">
-          <h2 class="footer-cta-title">Bereit für märchenhafte Momente?</h2>
-          <a href="#konfigurator" class="btn btn-primary btn-large">Jetzt Platz reservieren</a>
-        </div>
-
-        <!-- Footer Content -->
-        <div class="footer-content">
-          <div class="footer-column">
-            <h4>Knusperhäuschen</h4>
-            <p>
-              Handgemachte Lebkuchenhäuser<br>
-              mit Liebe aus Luzern
-            </p>
-          </div>
-
-          <div class="footer-column">
-            <h4>Kontakt</h4>
-            <ul class="footer-links">
-              <li>📧 <a href="mailto:info@knusperhaueschen.ch">info@knusperhaueschen.ch</a></li>
-              <li>📞 <a href="tel:+41411234567">+41 41 123 45 67</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h4>Links</h4>
-            <ul class="footer-links">
-              <li><a href="#story">Über uns</a></li>
-              <li><a href="#angebot">Angebot</a></li>
-              <li><a href="#">Impressum</a></li>
-              <li><a href="#">Datenschutz</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-column">
-            <h4>Folge uns</h4>
-            <div class="footer-social">
-              <a href="#" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">📷</span>
-              </a>
-              <a href="#" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">👍</span>
-              </a>
-              <a href="#" class="footer-social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">🎵</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>&copy; 2024 Knusperhäuschen Luzern. Mit Herz gemacht von Anna, Thomas, Sophie & Lukas.</p>
-        </div>
-      </div>
-    </footer>
-
-  </main>
-
-  <!-- Order Modal -->
-  <div class="modal" id="orderModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Bestellung aufgeben</h2>
-        <button class="modal-close" id="closeOrderModal" aria-label="Modal schließen">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="orderForm" novalidate>
-          <div class="form-group">
-            <label for="order-name" class="form-label">Name *</label>
-            <input type="text" id="order-name" name="name" class="form-input" required>
-            <span class="form-error" id="error-order-name"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="order-email" class="form-label">E-Mail *</label>
-            <input type="email" id="order-email" name="email" class="form-input" required>
-            <span class="form-error" id="error-order-email"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="order-phone" class="form-label">Telefon</label>
-            <input type="tel" id="order-phone" name="phone" class="form-input">
-          </div>
-
-          <div class="form-group">
-            <label for="order-message" class="form-label">Nachricht</label>
-            <textarea id="order-message" name="message" class="form-textarea" rows="4"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Deine Konfiguration</label>
-            <div id="orderSummary" style="padding: 1rem; background: rgba(238,208,112,0.1); border-radius: 8px; color: var(--c-text-on-dark);"></div>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-large">Anfrage senden</button>
-
-          <div class="form-success" id="orderSuccess" style="display: none;">
-            <div class="form-success-icon">✓</div>
-            <h3>Vielen Dank!</h3>
-            <p>Wir haben deine Anfrage erhalten und melden uns in Kürze bei dir.</p>
-          </div>
-        </form>
       </div>
     </div>
-  </div>
 
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
-  <script src="js/intro.js"></script>
-  <script src="js/configurator.js"></script>
-</body>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/intro.js"></script>
+    <script src="js/configurator.js"></script>
+  </body>
 </html>
