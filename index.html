@@ -232,13 +232,21 @@
 
           <!-- Erklärvideo -->
           <div class="angebot-video mt-lg">
-            <!-- Girlanden Overlay -->
-            <img
-              src="assets/img/overlays/girlande.webp"
-              alt=""
-              class="angebot-video-top-overlay"
-              aria-hidden="true"
-            />
+            <!-- Girlanden Overlay - Dupliziert für Desktop/Tablet -->
+            <div class="angebot-video-girlanden-wrapper">
+              <img
+                src="assets/img/overlays/girlande.webp"
+                alt=""
+                class="angebot-video-top-overlay angebot-video-top-overlay-left"
+                aria-hidden="true"
+              />
+              <img
+                src="assets/img/overlays/girlande.webp"
+                alt=""
+                class="angebot-video-top-overlay angebot-video-top-overlay-right"
+                aria-hidden="true"
+              />
+            </div>
             <h3 class="text-center mb-md">Schau dir an, wie's funktioniert</h3>
             <!-- TODO: Add explanation video -->
             <div
@@ -266,6 +274,9 @@
 
       <!-- STORY / ÜBER UNS SECTION -->
       <section class="story reveal" id="story">
+        <!-- Schnee Partikel System -->
+        <div class="story-snow-container" id="storySnow"></div>
+
         <div class="container">
           <div class="section-header">
             <p class="section-subtitle">Unsere Geschichte</p>
@@ -1603,5 +1614,6 @@
     <script src="js/main.js"></script>
     <script src="js/intro.js"></script>
     <script src="js/configurator.js"></script>
+    <script src="js/snow.js"></script>
   </body>
 </html>

@@ -584,13 +584,48 @@
   pointer-events: none;
 }
 
-.angebot-video-top-overlay {
-  display: block;
+/* Girlanden Wrapper - Horizontal auf Desktop/Tablet */
+.angebot-video-girlanden-wrapper {
+  display: flex;
+  justify-content: space-between;
   width: 100vw;
-  height: auto;
   margin-left: calc(-50vw + 50%);
   margin-bottom: var(--spacing-md);
+}
+
+.angebot-video-top-overlay {
+  display: block;
+  width: 50%;
+  height: auto;
   pointer-events: none;
+}
+
+/* Desktop und Tablet: Beide Girlanden nebeneinander - volle Höhe */
+@media (min-width: 769px) {
+  .angebot-video-top-overlay-left {
+    display: block;
+  }
+
+  .angebot-video-top-overlay-right {
+    display: block;
+  }
+}
+
+/* Mobile: Nur eine zentrierte Girlande */
+@media (max-width: 768px) {
+  .angebot-video-girlanden-wrapper {
+    justify-content: center;
+  }
+
+  .angebot-video-top-overlay-left {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .angebot-video-top-overlay-right {
+    display: none;
+  }
 }
 
 .angebot-video video {
@@ -609,6 +644,58 @@
   ); /* Warmer Sekundärhintergrund für besseren Kontrast */
   position: relative;
   padding-bottom: 0;
+  overflow: hidden; /* Verhindert Schnee außerhalb der Section */
+}
+
+/* Schnee Partikel Container */
+.story-snow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Hinter den Karten */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Einzelne Schneeflocke */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  pointer-events: none;
+  animation: snowfall linear infinite;
+  will-change: transform, opacity;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 3px rgba(173, 216, 230, 0.4)); /* Sanfter Glow für Schneeflocken */
+}
+
+/* Schneefall Animation */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-50px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  2% {
+    opacity: 0.9; /* Schneller Fade-In */
+  }
+  98% {
+    opacity: 0.9; /* Bleiben bis fast zum Ende sichtbar */
+  }
+  100% {
+    transform: translateY(var(--fall-distance)) translateX(var(--horizontal-drift)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Reduzierte Animation für prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation: none;
+    display: none;
+  }
 }
 
 .story-bottom-overlay {
@@ -642,7 +729,10 @@
 }
 
 .team-founder-card {
-  background-color: var(--c-snow);
+  background-image: url('../img/Papierhintergrund.webp');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-snow); /* Fallback */
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-warm);
@@ -672,7 +762,7 @@
   width: 100%;
   height: 320px;
   overflow: hidden;
-  background-color: var(--c-bg-secondary);
+  /* background-color entfernt, damit Papiertextur sichtbar wird */
 }
 
 .team-founder-photo img {
@@ -749,7 +839,10 @@
 }
 
 .team-member-card {
-  background-color: var(--c-snow);
+  background-image: url('../img/Papierhintergrund.webp');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-snow); /* Fallback */
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -767,7 +860,7 @@
   width: 100%;
   height: 240px;
   overflow: hidden;
-  background-color: var(--c-bg-secondary);
+  /* background-color entfernt, damit Papiertextur sichtbar wird */
 }
 
 .team-member-photo img {
@@ -878,8 +971,8 @@
 }
 
 .story-support-icon {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -904,16 +997,35 @@
   background-color: var(--c-bg); /* Heller Haupthintergrund */
 }
 
-/* Back button outside grid */
+/* Back Button - außerhalb des Grids */
 .konfigurator-back-btn {
+  background: transparent;
+  border: none;
+  color: var(--c-accent);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
   margin-bottom: var(--spacing-md);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Desktop: Side-by-side layout with grid */
+.konfigurator-back-btn:hover {
+  color: var(--c-accent-dark);
+  transform: translateX(-5px);
+}
+
+/* Konfigurator Wrapper - Hauptcontainer */
 .konfigurator-wrapper.konfigurator-delivery {
   margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
 }
 
+/* Desktop Layout: Steps links, Preview rechts (nebeneinander) */
 @media (min-width: 1025px) {
   .konfigurator-wrapper.konfigurator-delivery {
     display: grid;
@@ -926,14 +1038,39 @@
   .konfigurator-wrapper.konfigurator-delivery > .konfigurator-back-btn {
     grid-column: 1 / -1;
   }
+
+  /* Steps Container: linke Spalte */
+  .konfigurator-steps-container {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* Preview: rechte Spalte */
+  .konfigurator-preview {
+    grid-column: 2;
+    grid-row: 2;
+    position: sticky;
+    top: 120px; /* Navigation Höhe + Padding */
+    align-self: start;
+  }
 }
 
-/* Tablet and below: Stacked layout */
+/* Tablet und Mobile Layout: Steps oben, Preview unten (übereinander) */
 @media (max-width: 1024px) {
   .konfigurator-wrapper.konfigurator-delivery {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
+  }
+
+  /* Preview oben */
+  .konfigurator-preview {
+    order: 1;
+  }
+
+  /* Steps unten */
+  .konfigurator-steps-container {
+    order: 2;
   }
 }
 
@@ -943,12 +1080,12 @@
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(197, 163, 71, 0.2);
+  width: 100%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .konfigurator-steps-container {
     padding: var(--spacing-md);
-    order: 2;
   }
 }
 
@@ -1185,19 +1322,28 @@
 }
 
 .konfigurator-preview {
-  position: sticky;
-  top: 100px;
   background-color: var(--c-bg-secondary);
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(197, 163, 71, 0.2);
   text-align: center;
+  width: 100%;
 }
 
+/* Desktop: Sticky Preview auf der rechten Seite */
+@media (min-width: 1025px) {
+  .konfigurator-preview {
+    position: sticky;
+    top: 120px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+  }
+}
+
+/* Mobile und Tablet: Statisches Preview oben */
 @media (max-width: 1024px) {
   .konfigurator-preview {
     position: static;
-    order: 1;
     padding: var(--spacing-md);
   }
 }
@@ -1300,26 +1446,6 @@
 
 .konfigurator-mode-btn {
   width: 100%;
-}
-
-/* Back Button */
-.konfigurator-back-btn {
-  background: transparent;
-  border: none;
-  color: var(--c-accent);
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  margin-bottom: var(--spacing-md);
-  transition: all var(--transition-fast);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.konfigurator-back-btn:hover {
-  color: var(--c-accent-dark);
-  transform: translateX(-5px);
 }
 
 /* Reservation Form */
