@@ -47,47 +47,6 @@
             src="assets/video/Intro Knusperhaeuschen.webm"
             type="video/webm"
           />
-          <!-- Fallback für ältere Browser -->
-          <div class="intro-house" aria-hidden="true">
-            <svg
-              viewBox="0 0 200 200"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <!-- Simple gingerbread house illustration -->
-              <path
-                d="M100 20 L170 80 L170 160 L30 160 L30 80 Z"
-                fill="#8B4513"
-                stroke="#EED070"
-                stroke-width="2"
-              />
-              <path
-                d="M100 20 L40 70 L160 70 Z"
-                fill="#A0522D"
-                stroke="#EED070"
-                stroke-width="2"
-              />
-              <rect
-                x="75"
-                y="110"
-                width="25"
-                height="35"
-                fill="#654321"
-                stroke="#EED070"
-                stroke-width="2"
-              />
-              <rect
-                x="120"
-                y="90"
-                width="25"
-                height="25"
-                fill="#87CEEB"
-                stroke="#EED070"
-                stroke-width="2"
-              />
-              <circle cx="88" cy="130" r="3" fill="#EED070" />
-            </svg>
-          </div>
         </video>
       </div>
     </div>
@@ -142,11 +101,21 @@
     <main id="main-content">
       <!-- HERO SECTION -->
       <section class="hero" id="hero">
-        <!-- TODO: Add hero video/animation -->
-        <!-- <video class="hero-video" autoplay muted loop playsinline>
-        <source src="assets/video/hero.mp4" type="video/mp4">
-      </video> -->
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source
+            src="assets/video/Knusperhaeuschen_Promofilm_10sec.webm"
+            type="video/webm"
+          />
+        </video>
         <div class="hero-overlay" aria-hidden="true"></div>
+
+        <!-- Video Header Overlay -->
+        <img
+          src="assets/img/overlays/Video Header Overlay.webp"
+          alt=""
+          class="hero-bottom-overlay"
+          aria-hidden="true"
+        />
 
         <div class="container hero-content">
           <h1 class="hero-title">Märchenhafte Momente erleben</h1>
@@ -189,19 +158,25 @@
           <!-- 3-Step Process -->
           <div class="angebot-steps">
             <div class="angebot-step">
-              <div class="angebot-step-icon">1</div>
+              <div class="angebot-step-icon">
+                <img src="assets/img/icons/step-1.webp" alt="Schritt 1" />
+              </div>
               <span>Auswählen</span>
             </div>
             <div class="angebot-step-arrow" aria-hidden="true">→</div>
 
             <div class="angebot-step">
-              <div class="angebot-step-icon">2</div>
+              <div class="angebot-step-icon">
+                <img src="assets/img/icons/step-2.webp" alt="Schritt 2" />
+              </div>
               <span>Gestalten</span>
             </div>
             <div class="angebot-step-arrow" aria-hidden="true">→</div>
 
             <div class="angebot-step">
-              <div class="angebot-step-icon">3</div>
+              <div class="angebot-step-icon">
+                <img src="assets/img/icons/step-3.webp" alt="Schritt 3" />
+              </div>
               <span>Geniessen</span>
             </div>
           </div>
@@ -228,7 +203,7 @@
               <div class="card-icon" aria-hidden="true">🎁</div>
               <h3 class="card-title">Nach Hause bestellen</h3>
               <p class="card-text">
-                Stelle dein Lebkuchenhaus individuell zusammen: Wähle Größe,
+                Stelle dein Lebkuchenhaus individuell zusammen: Wähle Grösse,
                 Deko-Style und personalisierte Häuschen-Täfelchen. Entscheide,
                 ob du es selbst aufbauen möchtest (DIY-Box) oder es fertig
                 aufgebaut geliefert bekommen willst. Mit regionalem Birnel und
@@ -257,6 +232,13 @@
 
           <!-- Erklärvideo -->
           <div class="angebot-video mt-lg">
+            <!-- Girlanden Overlay -->
+            <img
+              src="assets/img/overlays/girlande.webp"
+              alt=""
+              class="angebot-video-top-overlay"
+              aria-hidden="true"
+            />
             <h3 class="text-center mb-md">Schau dir an, wie's funktioniert</h3>
             <!-- TODO: Add explanation video -->
             <div
@@ -289,7 +271,9 @@
             <p class="section-subtitle">Unsere Geschichte</p>
             <h2 class="section-title">Von der Backstube zum Erlebnis</h2>
             <p class="section-description">
-              Hinter Knusperhäuschen stehen Lukas und Anna Müller, ein Bäckermeisterpaar aus der Zentralschweiz, das mit Leidenschaft und Handwerkskunst traditionelles Backwerk neu belebt.
+              Hinter Knusperhäuschen stehen Lukas und Anna Müller, ein
+              Bäckermeisterpaar aus der Zentralschweiz, das mit Leidenschaft und
+              Handwerkskunst traditionelles Backwerk neu belebt.
             </p>
           </div>
 
@@ -299,13 +283,19 @@
             <div class="team-founders">
               <div class="team-founder-card">
                 <div class="team-founder-photo">
-                  <img src="assets/img/team/Lukas und Anna Müller.png" alt="Lukas und Anna Müller" />
+                  <img
+                    src="assets/img/team/Lukas und Anna Müller.webp"
+                    alt="Lukas und Anna Müller"
+                  />
                 </div>
                 <div class="team-founder-info">
                   <h3 class="team-founder-names">Lukas & Anna Müller</h3>
                   <p class="team-founder-role">Bäckermeister & Gründer</p>
                   <p class="team-founder-text">
-                    "Als Bäckermeisterpaar vereinen wir traditionelles Handwerk mit kreativen Ideen. Unsere Knusperhäuschen sind mehr als nur Backwerk – sie sind Erlebnisse, die Familien zusammenbringen und unvergessliche Momente schaffen."
+                    "Als Bäckermeisterpaar vereinen wir traditionelles Handwerk
+                    mit kreativen Ideen. Unsere Knusperhäuschen sind mehr als
+                    nur Backwerk – sie sind Erlebnisse, die Familien
+                    zusammenbringen und unvergessliche Momente schaffen."
                   </p>
                 </div>
               </div>
@@ -315,26 +305,34 @@
             <div class="team-members">
               <div class="team-member-card">
                 <div class="team-member-photo">
-                  <img src="assets/img/team/Marco Steiner.png" alt="Marco Steiner" />
+                  <img
+                    src="assets/img/team/Marco Steiner.webp"
+                    alt="Marco Steiner"
+                  />
                 </div>
                 <div class="team-member-info">
                   <h4 class="team-member-name">Marco Steiner</h4>
                   <p class="team-member-role">Bäcker</p>
                   <p class="team-member-text">
-                    "Mit Präzision und Hingabe sorge ich dafür, dass jedes Lebkuchenhaus perfekt gelingt."
+                    "Mit Präzision und Hingabe sorge ich dafür, dass jedes
+                    Lebkuchenhaus perfekt gelingt."
                   </p>
                 </div>
               </div>
 
               <div class="team-member-card">
                 <div class="team-member-photo">
-                  <img src="assets/img/team/Sophie Keller.png" alt="Sophie Keller" />
+                  <img
+                    src="assets/img/team/Sophie Keller.webp"
+                    alt="Sophie Keller"
+                  />
                 </div>
                 <div class="team-member-info">
                   <h4 class="team-member-name">Sophie Keller</h4>
                   <p class="team-member-role">Konditorin</p>
                   <p class="team-member-text">
-                    "Die Dekoration ist meine Leidenschaft – ich liebe es, jedes Detail zum Leben zu erwecken."
+                    "Die Dekoration ist meine Leidenschaft – ich liebe es, jedes
+                    Detail zum Leben zu erwecken."
                   </p>
                 </div>
               </div>
@@ -364,24 +362,35 @@
             <div class="story-value-card">
               <div class="story-value-icon">❤️</div>
               <h4>Familienfreundlich</h4>
-              <p>Genussmomente für Groß und Klein</p>
+              <p>Genussmomente für Gross und Klein</p>
             </div>
           </div>
 
           <!-- Blauring Support -->
           <div class="story-support">
             <div class="story-support-badge">
-              <span class="story-support-icon">🤝</span>
+              <img
+                src="assets/img/icons/blauring_luzern_logo.webp"
+                alt="Blauring Luzern Logo"
+                class="story-support-icon"
+              />
               <div class="story-support-text">
                 <strong>Unterstützt vom Blauring Luzern</strong>
                 <p>
-                  Gemeinsam schaffen wir unvergessliche Erlebnisse am
-                  Marktstand
+                  Gemeinsam schaffen wir unvergessliche Erlebnisse am Marktstand
                 </p>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Bäume Overlay -->
+        <img
+          src="assets/img/overlays/baeume.webp"
+          alt=""
+          class="story-bottom-overlay"
+          aria-hidden="true"
+        />
       </section>
 
       <!-- KONFIGURATOR SECTION -->
@@ -555,7 +564,7 @@
               <div class="konfigurator-progress">
                 <div class="konfigurator-progress-step active" data-step="1">
                   <div class="progress-step-number">1</div>
-                  <div class="progress-step-label">Größe</div>
+                  <div class="progress-step-label">Grösse</div>
                 </div>
                 <div class="konfigurator-progress-line"></div>
                 <div class="konfigurator-progress-step" data-step="2">
@@ -589,10 +598,10 @@
 
               <!-- Step Content Area -->
               <div class="konfigurator-step-content">
-                <!-- Step 1: Größe -->
+                <!-- Step 1: Grösse -->
                 <div class="konfigurator-step active" data-step="1">
                   <h3 class="konfigurator-step-title">
-                    Wähle die Größe deines Lebkuchenhauses
+                    Wähle die Grösse deines Lebkuchenhauses
                   </h3>
                   <div class="konfigurator-option-choices">
                     <div class="konfigurator-option-choice">
@@ -634,7 +643,7 @@
                         data-price="60"
                       />
                       <label for="size-large" class="konfigurator-option-label">
-                        <span class="option-name">Groß</span>
+                        <span class="option-name">Gross</span>
                         <span class="option-price">CHF 60.-</span>
                       </label>
                     </div>
@@ -715,20 +724,6 @@
                         class="konfigurator-option-label"
                       >
                         <span class="option-name">Klassisch</span>
-                      </label>
-                    </div>
-                    <div class="konfigurator-option-choice">
-                      <input
-                        type="radio"
-                        id="style-modern"
-                        name="style"
-                        value="modern"
-                      />
-                      <label
-                        for="style-modern"
-                        class="konfigurator-option-label"
-                      >
-                        <span class="option-name">Modern</span>
                       </label>
                     </div>
                     <div class="konfigurator-option-choice">
@@ -862,28 +857,21 @@
             <div class="konfigurator-preview">
               <h3 class="konfigurator-preview-title">Dein Häuschen</h3>
               <div class="konfigurator-preview-canvas" id="previewCanvas">
-                <!-- Base House -->
+                <!-- Main House Layer (dynamically changes based on style + snow + lights) -->
                 <img
-                  src="assets/img/house-base.png"
-                  alt="Lebkuchenhaus Basis"
+                  src="assets/img/layers_configurator/_0001s_0003_classic_no-snow_no-lights.webp"
+                  alt="Lebkuchenhaus"
                   class="konfigurator-preview-layer"
-                  id="layerBase"
-                  onerror="this.style.display='none'"
+                  id="layerHouse"
                 />
-                <!-- TODO: Add overlay images based on configuration -->
-                <div
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 4rem;
-                    color: var(--c-accent);
-                  "
-                >
-                  🏠
-                </div>
+                <!-- Figures Layer (optional, toggled by "Figuren" extra) -->
+                <img
+                  src="assets/img/layers_configurator/figure_addin.webp"
+                  alt="Figuren"
+                  class="konfigurator-preview-layer"
+                  id="layerFigures"
+                  style="display: none"
+                />
               </div>
 
               <!-- Summary only in preview (no order button here) -->
@@ -993,7 +981,7 @@
               <!-- First set of items -->
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
+                  src="assets/img/icons/KH Instagram.webp"
                   alt="Instagram"
                   class="social-icon"
                 />
@@ -1006,7 +994,7 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/facebook-logo.svg"
+                  src="assets/img/icons/KH Facebook.webp"
                   alt="Facebook"
                   class="social-icon"
                 />
@@ -1019,8 +1007,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
-                  alt="Instagram"
+                  src="assets/img/icons/KH Tiktok.webp"
+                  alt="TikTok"
                   class="social-icon"
                 />
                 <img
@@ -1032,8 +1020,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/facebook-logo.svg"
-                  alt="Facebook"
+                  src="assets/img/icons/KH Instagram.webp"
+                  alt="Instagram"
                   class="social-icon"
                 />
                 <img
@@ -1045,8 +1033,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
-                  alt="Instagram"
+                  src="assets/img/icons/KH Facebook.webp"
+                  alt="Facebook"
                   class="social-icon"
                 />
                 <img
@@ -1058,8 +1046,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
-                  alt="Facebook"
+                  src="assets/img/icons/KH Tiktok.webp"
+                  alt="TikTok"
                   class="social-icon"
                 />
                 <img
@@ -1072,7 +1060,7 @@
               <!-- Duplicate set for seamless loop -->
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
+                  src="assets/img/icons/KH Instagram.webp"
                   alt="Instagram"
                   class="social-icon"
                 />
@@ -1085,7 +1073,7 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/facebook-logo.svg"
+                  src="assets/img/icons/KH Facebook.webp"
                   alt="Facebook"
                   class="social-icon"
                 />
@@ -1098,8 +1086,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
-                  alt="Instagram"
+                  src="assets/img/icons/KH Tiktok.webp"
+                  alt="TikTok"
                   class="social-icon"
                 />
                 <img
@@ -1111,8 +1099,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/facebook-logo.svg"
-                  alt="Facebook"
+                  src="assets/img/icons/KH Instagram.webp"
+                  alt="Instagram"
                   class="social-icon"
                 />
                 <img
@@ -1124,8 +1112,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
-                  alt="Instagram"
+                  src="assets/img/icons/KH Facebook.webp"
+                  alt="Facebook"
                   class="social-icon"
                 />
                 <img
@@ -1137,8 +1125,8 @@
               </div>
               <div class="community-item">
                 <img
-                  src="assets/social_icons/instagram-logo.svg"
-                  alt="Facebook"
+                  src="assets/img/icons/KH Tiktok.webp"
+                  alt="TikTok"
                   class="social-icon"
                 />
                 <img
@@ -1393,7 +1381,7 @@
         <button
           class="checkout-close"
           id="closeOrderModal"
-          aria-label="Checkout schließen"
+          aria-label="Checkout schliessen"
         >
           &times;
         </button>

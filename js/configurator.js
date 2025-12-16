@@ -381,50 +381,54 @@
   const updatePreview = () => {
     console.log('Configuration updated:', state);
 
-    // TODO: Update preview canvas with actual images
-    // For now, this is a placeholder implementation
+    // Get layer elements
+    const layerHouse = document.getElementById('layerHouse');
+    const layerFigures = document.getElementById('layerFigures');
 
-    // Example of how to toggle layers:
-    /*
-    const canvas = document.getElementById('previewCanvas');
+    if (!layerHouse) return;
 
-    // Clear existing overlays
-    const existingOverlays = canvas.querySelectorAll('.preview-overlay');
-    existingOverlays.forEach(overlay => overlay.remove());
+    // Determine house layer based on style + snow + lights
+    const style = state.style; // 'classic' or 'winter'
+    const hasSnow = state.toppings.includes('snow');
+    const hasLights = state.toppings.includes('lights');
+    const hasFigures = state.toppings.includes('figures');
 
-    // Add base house
-    const baseLayer = document.createElement('img');
-    baseLayer.src = 'assets/img/house-base.png';
-    baseLayer.className = 'konfigurator-preview-layer';
-    baseLayer.alt = 'Lebkuchenhaus Basis';
-    canvas.appendChild(baseLayer);
+    // Build filename based on configuration
+    // Format: _000Xs_000X_STYLE_SNOW_LIGHTS.webp
+    // classic layers: _0001s_000X
+    // winter layers: _0002s_000X
 
-    // Add size layer
-    if (layerMap.size[state.size]) {
-      const sizeLayer = document.createElement('img');
-      sizeLayer.src = layerMap.size[state.size];
-      sizeLayer.className = 'konfigurator-preview-layer preview-overlay';
-      canvas.appendChild(sizeLayer);
-    }
+    let filename = '';
 
-    // Add style layer
-    if (layerMap.style[state.style]) {
-      const styleLayer = document.createElement('img');
-      styleLayer.src = layerMap.style[state.style];
-      styleLayer.className = 'konfigurator-preview-layer preview-overlay';
-      canvas.appendChild(styleLayer);
-    }
-
-    // Add topping layers
-    state.toppings.forEach(topping => {
-      if (layerMap.toppings[topping]) {
-        const toppingLayer = document.createElement('img');
-        toppingLayer.src = layerMap.toppings[topping];
-        toppingLayer.className = 'konfigurator-preview-layer preview-overlay';
-        canvas.appendChild(toppingLayer);
+    if (style === 'classic') {
+      if (hasSnow && hasLights) {
+        filename = '_0001s_0000_classic_with-snow_with-lights.webp';
+      } else if (hasSnow && !hasLights) {
+        filename = '_0001s_0001_classic_with-snow_no-lights.webp';
+      } else if (!hasSnow && hasLights) {
+        filename = '_0001s_0002_classic_no-snow_with-lights.webp';
+      } else {
+        filename = '_0001s_0003_classic_no-snow_no-lights.webp';
       }
-    });
-    */
+    } else if (style === 'winter') {
+      if (hasSnow && hasLights) {
+        filename = '_0002s_0000_winter_with-snow_with-lights.webp';
+      } else if (hasSnow && !hasLights) {
+        filename = '_0002s_0003_winter_with-snow_no-lights.webp';
+      } else if (!hasSnow && hasLights) {
+        filename = '_0002s_0001_winter_no-snow_with-lights.webp';
+      } else {
+        filename = '_0002s_0002_winter_no-snow_no-lights.webp';
+      }
+    }
+
+    // Update house layer
+    layerHouse.src = `assets/img/layers_configurator/${filename}`;
+
+    // Toggle figures layer
+    if (layerFigures) {
+      layerFigures.style.display = hasFigures ? 'block' : 'none';
+    }
 
     // Update order summary if modal is open
     if (window.updateOrderSummary) {
