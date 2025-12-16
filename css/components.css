@@ -80,6 +80,35 @@
   border-color: var(--c-accent);
 }
 
+/* Organischer Button-Stil für Angebots-Karten */
+.btn-organic {
+  border-radius: 12px;
+  min-height: 48px;
+  padding: 1rem 2.25rem;
+  position: relative;
+  overflow: visible;
+}
+
+.btn-organic:hover {
+  box-shadow: 0 0 20px rgba(197, 163, 71, 0.4),
+              0 4px 12px rgba(61, 40, 23, 0.15);
+  animation: gentleWobble 0.6s ease;
+}
+
+@keyframes gentleWobble {
+  0%, 100% { transform: rotate(-0.5deg) translateY(-2px); }
+  25% { transform: rotate(0.3deg) translateY(-3px); }
+  50% { transform: rotate(-0.3deg) translateY(-2px); }
+  75% { transform: rotate(0.2deg) translateY(-3px); }
+}
+
+/* Reduzierte Bewegung: Kein Wobble */
+@media (prefers-reduced-motion: reduce) {
+  .btn-organic:hover {
+    animation: none;
+  }
+}
+
 .btn-large {
   padding: 1.25rem 3rem;
   font-size: 1.125rem;
@@ -101,7 +130,10 @@
    CARDS
    ============================================ */
 .card {
-  background-color: var(--c-bg-tertiary); /* Wärmere Farbe für besseren Kontrast */
+  background-image: url('../img/Papierhintergrund.webp');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-bg-tertiary); /* Fallback */
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
   position: relative;
@@ -144,6 +176,17 @@
   font-size: 2.5rem;
 }
 
+/* WebP Icon Images für Angebots-Karten */
+.card-icon-img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-md);
+  margin-left: -8px; /* Leicht versetzt für handgemachten Look */
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(197, 163, 71, 0.2));
+}
+
 .card-title {
   font-size: 1.5rem;
   margin-bottom: var(--spacing-sm);
@@ -153,6 +196,28 @@
 .card-text {
   color: var(--c-text);
   line-height: 1.6;
+}
+
+/* Typo-Hierarchie für Angebots-Karten */
+.angebot-card .card-title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--c-accent-dark);
+  letter-spacing: -0.01em;
+}
+
+.angebot-card-featured .card-title {
+  font-size: 1.75rem;
+}
+
+/* Erster Satz emotional hervorheben */
+.card-text-highlight {
+  display: block;
+  font-weight: 600;
+  color: var(--c-accent-dark);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
 }
 
 /* Card Grid */
@@ -166,6 +231,122 @@
 @media (max-width: 768px) {
   .card-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Angebots-Karten: Märchenhaft & handgemacht */
+.angebot-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+/* Individuelle Rotationen für handgemachten Look */
+.angebot-card:nth-child(1) {
+  transform: rotate(-0.6deg);
+}
+
+.angebot-card:nth-child(2) {
+  transform: rotate(0.4deg);
+}
+
+.angebot-card:nth-child(3) {
+  transform: rotate(-0.3deg);
+}
+
+/* Hauptkarte "Vor Ort bauen" - emotional hervorgehoben */
+.angebot-card-featured {
+  transform: rotate(-0.6deg) translateY(-12px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(197, 163, 71, 0.25),
+              0 4px 12px rgba(61, 40, 23, 0.1);
+  border-width: 3px;
+  border-color: var(--c-accent);
+}
+
+.angebot-card-featured .card-icon-img {
+  width: 96px;
+  height: 96px;
+  margin-left: -10px;
+}
+
+/* Hover-Effekte - ruhig und organisch */
+.angebot-card {
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
+}
+
+.angebot-card:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 0 16px 48px rgba(197, 163, 71, 0.3),
+              0 6px 16px rgba(61, 40, 23, 0.15);
+  border-color: var(--c-accent-dark);
+}
+
+.angebot-card-featured:hover {
+  transform: rotate(0deg) translateY(-16px) scale(1.06);
+  box-shadow: 0 20px 56px rgba(197, 163, 71, 0.35),
+              0 8px 20px rgba(61, 40, 23, 0.2);
+}
+
+/* Subtile Variationen im Border-Radius */
+.angebot-card:nth-child(1) {
+  border-radius: 14px 16px 15px 16px;
+}
+
+.angebot-card:nth-child(2) {
+  border-radius: 16px 14px 16px 15px;
+}
+
+.angebot-card:nth-child(3) {
+  border-radius: 15px 16px 14px 16px;
+}
+
+/* Tablet Layout: Hauptkarte links, zwei kleinere rechts */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .angebot-cards {
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .angebot-card-featured {
+    grid-row: 1 / 3;
+  }
+}
+
+/* Mobile Layout: Hauptkarte zuerst, dann die anderen */
+@media (max-width: 768px) {
+  .angebot-cards {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .angebot-card-featured {
+    transform: rotate(-0.4deg);
+  }
+
+  .angebot-card:hover {
+    transform: rotate(0deg) translateY(-4px);
+  }
+
+  .angebot-card-featured:hover {
+    transform: rotate(0deg) translateY(-6px) scale(1.02);
+  }
+}
+
+/* Reduzierte Bewegung für Barrierefreiheit */
+@media (prefers-reduced-motion: reduce) {
+  .angebot-card,
+  .angebot-card-featured {
+    transform: none !important;
+    transition: box-shadow var(--transition-base),
+                border-color var(--transition-base);
+  }
+
+  .angebot-card:hover,
+  .angebot-card-featured:hover {
+    transform: none !important;
   }
 }
 
@@ -352,7 +533,10 @@
 }
 
 .modal-content {
-  background-color: var(--c-bg);
+  background-image: url('../img/Papierhintergrund.webp');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-bg); /* Fallback */
   border: 2px solid var(--c-accent);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
