@@ -490,4 +490,61 @@
     });
   }
 
+  // ============================================
+  // LEGAL POPUPS
+  // ============================================
+
+  const legalLinks = document.querySelectorAll('.legal-link');
+  const legalPopups = document.querySelectorAll('.legal-popup');
+
+  // Open popup
+  legalLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const popupId = link.getAttribute('data-popup');
+      const popup = document.getElementById(popupId);
+
+      if (popup) {
+        popup.classList.add('is-active');
+        document.body.classList.add('popup-open');
+      }
+    });
+  });
+
+  // Close popup functionality
+  const closePopup = (popup) => {
+    popup.classList.remove('is-active');
+    document.body.classList.remove('popup-open');
+  };
+
+  // Close buttons
+  legalPopups.forEach(popup => {
+    const closeBtn = popup.querySelector('.legal-popup-close');
+    const overlay = popup.querySelector('.legal-popup-overlay');
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        closePopup(popup);
+      });
+    }
+
+    // Close on overlay click
+    if (overlay) {
+      overlay.addEventListener('click', () => {
+        closePopup(popup);
+      });
+    }
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      legalPopups.forEach(popup => {
+        if (popup.classList.contains('is-active')) {
+          closePopup(popup);
+        }
+      });
+    }
+  });
+
 })();

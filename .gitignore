@@ -36,6 +36,3 @@ Desktop.ini
 *.njsproj
 *.sln
 *.sw?
-
-# Claude
-.claude/

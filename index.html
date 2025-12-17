@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/sections.css" />
     <link rel="stylesheet" href="css/checkout.css" />
+    <link rel="stylesheet" href="css/legal-popup.css" />
   </head>
   <body>
     <!-- Skip Link for Accessibility -->
@@ -185,47 +186,75 @@
           <div class="card-grid angebot-cards">
             <!-- Marktstand-Erlebnis - Hauptkarte -->
             <article class="card angebot-card angebot-card-featured">
-              <img src="assets/img/icons/icon_angebot_haus.webp" alt="" class="card-icon-img" aria-hidden="true" />
+              <img
+                src="assets/img/icons/icon_angebot_haus.webp"
+                alt=""
+                class="card-icon-img"
+                aria-hidden="true"
+              />
               <h3 class="card-title">Vor Ort bauen</h3>
               <p class="card-text">
-                <strong class="card-text-highlight">Besuche uns am Weihnachtsstand in der Markthalle Luzern.</strong>
+                <strong class="card-text-highlight"
+                  >Besuche uns am Weihnachtsstand in der Markthalle
+                  Luzern.</strong
+                >
                 Unterstützt vom Blauring Luzern begleiten wir dich beim Bauen
                 und Dekorieren deines Lebkuchenhauses aus regionalem Birnel und
                 Freilandeiern. Perfekt für Familien und Gruppen!
               </p>
-              <a href="#konfigurator" class="btn btn-secondary btn-organic mt-md"
+              <a
+                href="#konfigurator"
+                class="btn btn-secondary btn-organic mt-md"
                 >Termin reservieren</a
               >
             </article>
 
             <!-- DIY-Box -->
             <article class="card angebot-card">
-              <img src="assets/img/icons/icon_angebot_basteln.webp" alt="" class="card-icon-img" aria-hidden="true" />
+              <img
+                src="assets/img/icons/icon_angebot_basteln.webp"
+                alt=""
+                class="card-icon-img"
+                aria-hidden="true"
+              />
               <h3 class="card-title">Nach Hause bestellen</h3>
               <p class="card-text">
-                <strong class="card-text-highlight">Stelle dein Lebkuchenhaus individuell zusammen:</strong>
-                Wähle Grösse, Deko-Style und personalisierte Häuschen-Täfelchen. Entscheide,
-                ob du es selbst aufbauen möchtest (DIY-Box) oder es fertig
-                aufgebaut geliefert bekommen willst. Mit regionalem Birnel und
-                Freilandeiern gebacken!
+                <strong class="card-text-highlight"
+                  >Stelle dein Lebkuchenhaus individuell zusammen:</strong
+                >
+                Wähle Grösse, Deko-Style und personalisierte Häuschen-Täfelchen.
+                Entscheide, ob du es selbst aufbauen möchtest (DIY-Box) oder es
+                fertig aufgebaut geliefert bekommen willst. Mit regionalem
+                Birnel und Freilandeiern gebacken!
               </p>
-              <a href="#konfigurator" class="btn btn-secondary btn-organic mt-md"
+              <a
+                href="#konfigurator"
+                class="btn btn-secondary btn-organic mt-md"
                 >Jetzt konfigurieren</a
               >
             </article>
 
             <!-- Fertiges Häuschen -->
             <article class="card angebot-card">
-              <img src="assets/img/icons/icon_angebot_geschenk.webp" alt="" class="card-icon-img" aria-hidden="true" />
+              <img
+                src="assets/img/icons/icon_angebot_geschenk.webp"
+                alt=""
+                class="card-icon-img"
+                aria-hidden="true"
+              />
               <h3 class="card-title">Fertige Geschenk-Sets</h3>
               <p class="card-text">
-                <strong class="card-text-highlight">Möchtest du ein bereits fertig dekoriertes Knusperhäuschen
-                verschenken?</strong>
-                Unsere Sets sind liebevoll handgemacht, mit
-                regionalem Birnel gebacken und sofort verschenkbereit.
-                Zusätzlich: Zuckerdekor einzeln erhältlich!
+                <strong class="card-text-highlight"
+                  >Möchtest du ein bereits fertig dekoriertes Knusperhäuschen
+                  verschenken?</strong
+                >
+                Unsere Sets sind liebevoll handgemacht, mit regionalem Birnel
+                gebacken und sofort verschenkbereit. Zusätzlich: Zuckerdekor
+                einzeln erhältlich!
               </p>
-              <a href="#konfigurator" class="btn btn-secondary btn-organic mt-md"
+              <a
+                href="#konfigurator"
+                class="btn btn-secondary btn-organic mt-md"
                 >Jetzt konfigurieren</a
               >
             </article>
@@ -234,25 +263,17 @@
           <!-- Erklärvideo -->
           <div class="angebot-video mt-lg">
             <h3 class="text-center mb-md">Schau dir an, wie's funktioniert</h3>
-            <!-- TODO: Add explanation video -->
-            <div
-              style="
-                width: 100%;
-                max-width: 800px;
-                margin: 0 auto;
-                aspect-ratio: 16/9;
-                background: rgba(238, 208, 112, 0.1);
-                border-radius: 16px;
-                display: flex;GHBCj
-
-                align-items: center;
-                justify-content: center;
-                color: var(--c-accent);
-                font-size: 3rem;
-              "
-            >
-              📹
-              <p style="font-size: 1rem; margin-left: 1rem">Video</p>
+            <div class="video-frame-wrapper">
+              <div class="video-container">
+                <iframe
+                  src="https://player.vimeo.com/video/1147237445?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  title="Knusperhäuschen"
+                >
+                </iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -281,7 +302,7 @@
               <div class="team-founder-card">
                 <div class="team-founder-photo">
                   <img
-                    src="assets/img/team/Lukas und Anna Müller.webp"
+                    src="assets/img/team/Lukas und Anna Mueller.webp"
                     alt="Lukas und Anna Müller"
                   />
                 </div>
@@ -339,25 +360,49 @@
           <!-- USPs in Card-Form -->
           <div class="story-values">
             <div class="story-value-card">
-              <div class="story-value-icon">🌾</div>
+              <div class="story-value-icon">
+                <img
+                  src="assets/img/icons/Icon_Weizen.webp"
+                  alt="Regional & Nachhaltig"
+                  class="story-value-icon-img"
+                />
+              </div>
               <h4>Regional & Nachhaltig</h4>
               <p>Lokales Birnel und Freilandeier aus der Zentralschweiz</p>
             </div>
 
             <div class="story-value-card">
-              <div class="story-value-icon">✋</div>
+              <div class="story-value-icon">
+                <img
+                  src="assets/img/icons/Icon_Hand.webp"
+                  alt="Handgemacht"
+                  class="story-value-icon-img"
+                />
+              </div>
               <h4>Handgemacht</h4>
               <p>Jedes Häuschen mit Liebe zum Detail gefertigt</p>
             </div>
 
             <div class="story-value-card">
-              <div class="story-value-icon">🎨</div>
+              <div class="story-value-icon">
+                <img
+                  src="assets/img/icons/Icon_Palette.webp"
+                  alt="Spielerisch kreativ"
+                  class="story-value-icon-img"
+                />
+              </div>
               <h4>Spielerisch kreativ</h4>
               <p>Backhandwerk zum Anfassen und Erleben</p>
             </div>
 
             <div class="story-value-card">
-              <div class="story-value-icon">❤️</div>
+              <div class="story-value-icon">
+                <img
+                  src="assets/img/icons/Icon_Herz-root.webp"
+                  alt="Familienfreundlich"
+                  class="story-value-icon-img"
+                />
+              </div>
               <h4>Familienfreundlich</h4>
               <p>Genussmomente für Gross und Klein</p>
             </div>
@@ -409,7 +454,13 @@
             </h3>
             <div class="konfigurator-mode-cards">
               <div class="konfigurator-mode-card" data-mode="onsite">
-                <div class="konfigurator-mode-icon">🏠</div>
+                <div class="konfigurator-mode-icon">
+                  <img
+                    src="assets/img/icons/icon_angebot_haus.webp"
+                    alt="Vor Ort bauen"
+                    class="konfigurator-mode-icon-img"
+                  />
+                </div>
                 <h4 class="konfigurator-mode-card-title">Vor Ort bauen</h4>
                 <p class="konfigurator-mode-card-desc">
                   Besuche uns am Stand und baue dein Häuschen direkt vor Ort
@@ -422,7 +473,13 @@
                 </button>
               </div>
               <div class="konfigurator-mode-card" data-mode="delivery">
-                <div class="konfigurator-mode-icon">📦</div>
+                <div class="konfigurator-mode-icon">
+                  <img
+                    src="assets/img/icons/icon_box.webp"
+                    alt="Nach Hause bestellen"
+                    class="konfigurator-mode-icon-img"
+                  />
+                </div>
                 <h4 class="konfigurator-mode-card-title">
                   Nach Hause bestellen
                 </h4>
@@ -852,7 +909,7 @@
 
             <!-- Preview Rechts (Always Visible) -->
             <div class="konfigurator-preview">
-              <h3 class="konfigurator-preview-title">Dein Häuschen</h3>
+              <h3 class="konfigurator-preview-title"></h3>
               <div class="konfigurator-preview-canvas" id="previewCanvas">
                 <!-- Main House Layer (dynamically changes based on style + snow + lights) -->
                 <img
@@ -998,7 +1055,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost2.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1011,7 +1068,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost3.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1024,7 +1081,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost4.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1037,7 +1094,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost5.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1050,7 +1107,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialPost6.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1077,7 +1134,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost2.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1090,7 +1147,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost3.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1103,7 +1160,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost4.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1116,7 +1173,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialpost5.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1129,7 +1186,7 @@
                   class="social-icon"
                 />
                 <img
-                  src="assets/social_posts/social_placeholder.jpg"
+                  src="assets/social_posts/socialPost6.jpg"
                   alt="Social Post"
                   class="social-image"
                 />
@@ -1268,11 +1325,19 @@
                 <span class="form-checkbox-custom"></span>
                 <span class="form-checkbox-label">
                   Ich akzeptiere die
-                  <a href="#" style="color: var(--c-accent)"
+                  <a
+                    href="#"
+                    class="legal-link"
+                    data-popup="teilnahmePopup"
+                    style="color: var(--c-accent)"
                     >Teilnahmebedingungen</a
                   >
                   und
-                  <a href="#" style="color: var(--c-accent)"
+                  <a
+                    href="#"
+                    class="legal-link"
+                    data-popup="datenschutzPopup"
+                    style="color: var(--c-accent)"
                     >Datenschutzerklärung</a
                   >
                   *
@@ -1296,6 +1361,9 @@
           </form>
         </div>
       </section>
+
+      <!-- Decorative Pattern Bar -->
+      <div class="pattern-bar"></div>
 
       <!-- FOOTER -->
       <footer class="footer" id="contact">
@@ -1336,8 +1404,16 @@
               <ul class="footer-links">
                 <li><a href="#story">Über uns</a></li>
                 <li><a href="#angebot">Angebot</a></li>
-                <li><a href="#">Impressum</a></li>
-                <li><a href="#">Datenschutz</a></li>
+                <li>
+                  <a href="#" class="legal-link" data-popup="impressumPopup"
+                    >Impressum</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="legal-link" data-popup="datenschutzPopup"
+                    >Datenschutz</a
+                  >
+                </li>
               </ul>
             </div>
 
@@ -1345,13 +1421,17 @@
               <h4>Folge uns</h4>
               <div class="footer-social">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/knusperhaeuschen.ch/"
                   class="footer-social-link"
                   aria-label="Instagram"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span aria-hidden="true">📷</span>
+                  <img
+                    src="assets/img/icons/KH Instagram.webp"
+                    alt="Instagram"
+                    class="footer-social-icon"
+                  />
                 </a>
                 <a
                   href="#"
@@ -1360,7 +1440,11 @@
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span aria-hidden="true">👍</span>
+                  <img
+                    src="assets/img/icons/KH Facebook.webp"
+                    alt="Facebook"
+                    class="footer-social-icon"
+                  />
                 </a>
                 <a
                   href="#"
@@ -1369,7 +1453,11 @@
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span aria-hidden="true">🎵</span>
+                  <img
+                    src="assets/img/icons/KH Tiktok.webp"
+                    alt="TikTok"
+                    class="footer-social-icon"
+                  />
                 </a>
               </div>
             </div>
@@ -1611,10 +1699,239 @@
       </div>
     </div>
 
+    <!-- Legal Popups -->
+    <!-- Impressum Popup -->
+    <div class="legal-popup" id="impressumPopup">
+      <div class="legal-popup-overlay"></div>
+      <div class="legal-popup-content">
+        <button class="legal-popup-close" aria-label="Schließen">
+          &times;
+        </button>
+        <div class="legal-popup-body">
+          <h2>1) Impressum (Website)</h2>
+
+          <h3>Anbieterin</h3>
+          <p>Knusperhaeuschen GmbH</p>
+
+          <h3>Adresse</h3>
+          <p>
+            Am Mattenhofring 3a<br />
+            6010 Kriens Kontakt<br />
+            Telefon: 041 000 00 01<br />
+            E-Mail: info@knusperhaueschen.ch
+          </p>
+
+          <h3>Konzept und Umsetzung (Schulprojekt)</h3>
+          <p>
+            Diese Landingpage entstand im Rahmen eines Schulprojekts im Dezember
+            2025 durch Fabio Alverde, Alexej Waser, Olivia Vieli und Leonie
+            Walker.
+          </p>
+
+          <h3>Haftungshinweis</h3>
+          <p>
+            Die Inhalte dieser Website werden mit Sorgfalt erstellt. Trotzdem
+            übernehmen wir keine Gewähr für Aktualität, Vollständigkeit und
+            Richtigkeit. Verlinkte externe Seiten liegen ausserhalb unseres
+            Verantwortungsbereichs.
+          </p>
+
+          <h3>Urheberrecht</h3>
+          <p>
+            Alle Inhalte (Texte, Bilder, Videos, Illustrationen und Designs)
+            sind urheberrechtlich geschützt. Eine Verwendung ausserhalb der
+            gesetzlichen Schranken ist nur mit vorheriger schriftlicher
+            Zustimmung erlaubt.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Datenschutz Popup -->
+    <div class="legal-popup" id="datenschutzPopup">
+      <div class="legal-popup-overlay"></div>
+      <div class="legal-popup-content">
+        <button class="legal-popup-close" aria-label="Schließen">
+          &times;
+        </button>
+        <div class="legal-popup-body">
+          <h2>2) Datenschutz (Datenschutzerklärung)</h2>
+
+          <h3>Verantwortliche Stelle</h3>
+          <p>Knusperhaeuschen GmbH, Am Mattenhofring 3a, 6010 Kriens</p>
+          <p>E-Mail: info@knusperhaueschen.ch, Telefon: 041 000 00 01</p>
+
+          <h3>Welche Daten wir verarbeiten</h3>
+          <p>
+            Je nachdem, wie du unsere Website nutzt, können folgende Daten
+            anfallen:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Kontakt- und Anfrageformulare:</strong> Name,
+              E-Mail-Adresse, Telefon (optional), Nachrichtentext. Zweck:
+              Beantwortung deiner Anfrage bzw. Durchführung einer Bestellung.
+              Verarbeitung erfolgt auf Grundlage deiner Einwilligung (z.B.
+              Reservierungswunsch oder Konfiguration).
+            </li>
+            <li>
+              <strong>Gewinnspiel-Formulare:</strong> Name/Vorname, Alter,
+              Personenanzahl (max. 4), E-Mail-Adresse, Telefon sowie deine
+              Antwort auf die Schätzfrage.
+            </li>
+            <li>
+              <strong>Technische Daten:</strong> Beim Besuch der Website können
+              aus technischen Gründen Server-Logdaten entstehen (z.B.
+              IP-Adresse, Zeitpunkt, aufgerufene Seite, Browsertyp).
+            </li>
+          </ul>
+
+          <h3>Wofür wir die Daten nutzen</h3>
+          <ul>
+            <li>
+              um deine Anfrage zu beantworten oder eine Reservierung/Bestellung
+              zu bearbeiten
+            </li>
+            <li>
+              um am Gewinnspiel teilzunehmen und dich ggf. zu kontaktieren,
+              falls du gewinnst
+            </li>
+            <li>um die Website technisch bereitzustellen und zu verbessern</li>
+          </ul>
+
+          <h3>Weitergabe an Dritte</h3>
+          <p>
+            Deine Daten werden grundsätzlich nicht an Dritte weitergegeben, es
+            sei denn, dies ist zur Erfüllung des Vertragszwecks nötig (z.B.
+            Versanddienstleister) oder gesetzlich vorgeschrieben.
+          </p>
+
+          <h3>Speicherdauer</h3>
+          <p>
+            Wir speichern personenbezogene Daten nur so lange, wie es für den
+            jeweiligen Zweck erforderlich ist oder gesetzliche
+            Aufbewahrungsfristen bestehen.
+          </p>
+
+          <h3>Deine Rechte</h3>
+          <p>
+            Du hast jederzeit das Recht auf Auskunft, Berichtigung, Löschung
+            oder Einschränkung der Verarbeitung deiner Daten. Zudem kannst du
+            der Verarbeitung widersprechen und deine Einwilligung widerrufen.
+            Kontaktiere uns dazu unter info@knusperhaueschen.ch.
+          </p>
+
+          <h3>Cookies und Tracking</h3>
+          <p>
+            Aktuell setzen wir keine Cookies oder Tracking-Tools ein, die eine
+            Einwilligung erfordern. Sollte sich das ändern, informieren wir dich
+            transparent.
+          </p>
+
+          <h3>Externe Inhalte</h3>
+          <p>
+            Wir binden ggf. externe Dienste ein (z.B. Vimeo für Videos, Google
+            Maps für die Standortkarte). Beim Aufruf solcher Inhalte können
+            Daten (z.B. IP-Adresse) an den jeweiligen Anbieter übermittelt
+            werden. Bitte beachte auch die Datenschutzerklärungen dieser
+            Anbieter.
+          </p>
+
+          <h3>Änderungen dieser Datenschutzerklärung</h3>
+          <p>
+            Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um
+            aktuellen rechtlichen Anforderungen zu entsprechen oder Änderungen
+            unserer Leistungen umzusetzen.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teilnahmebedingungen Popup -->
+    <div class="legal-popup" id="teilnahmePopup">
+      <div class="legal-popup-overlay"></div>
+      <div class="legal-popup-content">
+        <button class="legal-popup-close" aria-label="Schließen">
+          &times;
+        </button>
+        <div class="legal-popup-body">
+          <h2>3) Teilnahmebedingungen (Gewinnspiel)</h2>
+
+          <h3>Veranstalter</h3>
+          <p>Knusperhaeuschen GmbH, Am Mattenhofring 3a, 6010 Kriens</p>
+
+          <h3>Teilnahme</h3>
+          <p>
+            Teilnahmeberechtigt sind alle natürlichen Personen ab 16 Jahren mit
+            Wohnsitz in der Schweiz. Mitarbeitende der Knusperhaeuschen GmbH
+            sowie deren Angehörige sind von der Teilnahme ausgeschlossen.
+          </p>
+
+          <h3>Gewinnspielzeitraum</h3>
+          <p>
+            Das Gewinnspiel läuft vom 16.12.2025 bis 31.12.2025. Einsendeschluss
+            ist der 31.12.2025 um 23:59 Uhr.
+          </p>
+
+          <h3>So nimmst du teil</h3>
+          <p>
+            Fülle das Gewinnspielformular vollständig aus (Name, Alter,
+            Personenanzahl, Kontaktdaten) und beantworte die Schätzfrage. Mit
+            dem Absenden des Formulars nimmst du automatisch am Gewinnspiel
+            teil.
+          </p>
+
+          <h3>Preis</h3>
+          <p>
+            Zu gewinnen gibt es ein Knusperhäuschen (Lebkuchenhaus) im Wert von
+            CHF 50.– für bis zu 4 Personen. Der Gewinn kann nicht bar ausgezahlt
+            oder umgetauscht werden.
+          </p>
+
+          <h3>Ermittlung und Benachrichtigung der Gewinner*innen</h3>
+          <p>
+            Unter allen fristgerecht eingegangenen und korrekten Einsendungen
+            wird nach Ablauf der Teilnahmefrist eine Gewinnerin oder ein
+            Gewinner per Zufallsverfahren ermittelt. Die Benachrichtigung
+            erfolgt per E-Mail oder Telefon innerhalb von 7 Tagen nach
+            Gewinnspielende. Meldet sich die/der Gewinner*in nicht innerhalb von
+            14 Tagen nach der Benachrichtigung, verfällt der Gewinnanspruch und
+            es wird eine Ersatzgewinnerin bzw. ein Ersatzgewinner ermittelt.
+          </p>
+
+          <h3>Datenschutz</h3>
+          <p>
+            Die im Rahmen des Gewinnspiels erhobenen Daten werden
+            ausschliesslich zur Durchführung des Gewinnspiels verwendet und nach
+            Abschluss gelöscht, sofern keine gesetzlichen Aufbewahrungsfristen
+            bestehen. Weitere Informationen findest du in unserer
+            Datenschutzerklärung.
+          </p>
+
+          <h3>Haftungsausschluss</h3>
+          <p>
+            Der Rechtsweg ist ausgeschlossen. Eine Barauszahlung des Gewinns ist
+            nicht möglich. Bei technischen Problemen oder Manipulation behalten
+            wir uns vor, das Gewinnspiel vorzeitig zu beenden oder einzelne
+            Teilnehmende auszuschliessen.
+          </p>
+
+          <h3>Änderungen</h3>
+          <p>
+            Wir behalten uns vor, das Gewinnspiel jederzeit ohne Angabe von
+            Gründen abzubrechen oder zu ändern, insbesondere falls eine
+            ordnungsgemässe Durchführung nicht gewährleistet werden kann.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/intro.js"></script>
     <script src="js/configurator.js"></script>
     <script src="js/snow.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
   </body>
 </html>

@@ -1,0 +1,210 @@
+/* ============================================
+   LEGAL POPUP SYSTEM
+   Popup-Overlays für Impressum, Datenschutz, Teilnahmebedingungen
+   ============================================ */
+
+/* Popup Container */
+.legal-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000; /* Über allem außer Loading Screen */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.legal-popup.is-active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Overlay Background */
+.legal-popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 27, 28, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+/* Popup Content */
+.legal-popup-content {
+  position: relative;
+  background-color: var(--c-bg);
+  border-radius: var(--radius-xl);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 3px solid var(--c-accent);
+  overflow: hidden;
+  animation: popupSlideIn 0.4s ease;
+}
+
+@keyframes popupSlideIn {
+  from {
+    transform: translateY(-30px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.legal-popup-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: var(--c-accent);
+  color: var(--c-snow);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(61, 40, 23, 0.2);
+}
+
+.legal-popup-close:hover {
+  background-color: var(--c-primary);
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 4px 12px rgba(61, 40, 23, 0.3);
+}
+
+/* Popup Body */
+.legal-popup-body {
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+  max-height: 90vh;
+  /* Custom Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-accent) var(--c-bg-secondary);
+}
+
+.legal-popup-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.legal-popup-body::-webkit-scrollbar-track {
+  background: var(--c-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.legal-popup-body::-webkit-scrollbar-thumb {
+  background: var(--c-accent);
+  border-radius: var(--radius-md);
+}
+
+.legal-popup-body::-webkit-scrollbar-thumb:hover {
+  background: var(--c-primary);
+}
+
+/* Typography */
+.legal-popup-body h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--c-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-right: 60px; /* Space for close button */
+  line-height: 1.2;
+}
+
+.legal-popup-body h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--c-text);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+.legal-popup-body p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-text);
+  margin-bottom: var(--spacing-md);
+}
+
+.legal-popup-body ul {
+  margin-left: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.legal-popup-body li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.legal-popup-body strong {
+  font-weight: 600;
+  color: var(--c-primary);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .legal-popup {
+    padding: var(--spacing-sm);
+  }
+
+  .legal-popup-content {
+    max-height: 95vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .legal-popup-body {
+    padding: var(--spacing-lg);
+    max-height: 95vh;
+  }
+
+  .legal-popup-body h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    padding-right: 50px;
+  }
+
+  .legal-popup-body h3 {
+    font-size: 1.125rem;
+    margin-top: var(--spacing-md);
+  }
+
+  .legal-popup-body p,
+  .legal-popup-body li {
+    font-size: 0.9375rem;
+  }
+
+  .legal-popup-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.75rem;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+  }
+}
+
+/* Prevent body scroll when popup is open */
+body.popup-open {
+  overflow: hidden;
+}
